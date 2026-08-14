@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "scss/at-import-partial-extension": null,
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "color-function-alias-notation": null,
+    "media-feature-range-notation": "prefix",
+    "selector-class-pattern": null,
+    "no-descending-specificity": null
+  }
+}

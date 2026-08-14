@@ -1,0 +1,120 @@
+# Taskfile for the resume site.
+# Install go-task: https://taskfile.dev/installation/
+# Run `task` (or `task --list`) to see everything available.
+version: "3"
+
+vars:
+  SITE_DIR: _site
+  BASEURL: ""
+  IMAGE: ghcr.io/gavinjalberghini/alberghini
+
+tasks:
+  default:
+    desc: List all available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  install:
+    desc: Install Node (lint) and Ruby (Jekyll) dependencies
+    cmds:
+      - task: install:node
+      - task: install:ruby
+
+  install:node:
+    desc: Install Node lint/format tooling
+    cmds:
+      - npm install
+
+  install:ruby:
+    desc: Install Ruby gems (Jekyll, html-proofer) into ./vendor/bundle
+    cmds:
+      - bundle config set --local path vendor/bundle
+      - bundle install
+
+  build:
+    desc: Build the site into {{.SITE_DIR}}
+    cmds:
+      - bundle exec jekyll build --trace
+
+  serve:
+    desc: Serve the site locally with live reload (http://localhost:4000/)
+    cmds:
+      - bundle exec jekyll serve --livereload
+
+  clean:
+    desc: Remove build output and caches
+    cmds:
+      - rm -rf {{.SITE_DIR}} .jekyll-cache .sass-cache .jekyll-metadata
+
+  docker:build:
+    desc: Build the container image for the local architecture
+    cmds:
+      - docker build -t {{.IMAGE}}:local .
+
+  docker:serve:
+    desc: Run the container locally (http://localhost:8080/)
+    deps: [docker:build]
+    cmds:
+      - docker run --rm -p 8080:8080 {{.IMAGE}}:local
+
+  docker:push:
+    desc: Build the linux/arm64 image and push it to GHCR (needs `docker login ghcr.io`)
+    summary: |
+      Manual fallback — CI (.github/workflows/container.yml) does this
+      automatically on every push to main. The Pantry cluster's Raspberry Pi
+      workers require linux/arm64.
+    cmds:
+      - docker buildx build --platform linux/arm64 -t {{.IMAGE}}:latest --push .
+
+  lint:
+    desc: Run all linters (Markdown, SCSS, formatting)
+    cmds:
+      - task: lint:md
+      - task: lint:scss
+      - task: lint:format
+
+  lint:md:
+    desc: Lint Markdown content
+    cmds:
+      - npx --no-install markdownlint-cli2 "**/*.md" "#node_modules" "#_site" "#vendor"
+
+  lint:scss:
+    desc: Lint SCSS styles
+    cmds:
+      - npx --no-install stylelint "_sass/**/*.scss"
+
+  lint:format:
+    desc: Check formatting of data, config, and styles with Prettier
+    cmds:
+      - npx --no-install prettier --check "**/*.{json,yml,yaml,scss}"
+
+  format:
+    desc: Auto-fix formatting with Prettier and stylelint
+    cmds:
+      - npx --no-install prettier --write "**/*.{json,yml,yaml,scss}"
+      - npx --no-install stylelint "_sass/**/*.scss" --fix
+
+  test:
+    desc: Build, then validate HTML and internal links (no network)
+    deps: [build]
+    cmds:
+      - >-
+        bundle exec htmlproofer {{.SITE_DIR}}
+        --disable-external
+        --ignore-urls "/^https:\\/\\/(github-readme-stats|streak-stats)\\./"
+
+  test:external:
+    desc: Build, then also validate external links (slower, needs network)
+    deps: [build]
+    cmds:
+      - >-
+        bundle exec htmlproofer {{.SITE_DIR}}
+        --ignore-status-codes "0,403,429,503"
+        --ignore-urls "/^https:\\/\\/(github-readme-stats|streak-stats)\\./"
+
+  check:
+    desc: Run lint + build + test (use this before opening a pull request)
+    cmds:
+      - task: lint
+      - task: test

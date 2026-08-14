@@ -1,0 +1,14 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler (gems install into ./vendor/bundle)
+/vendor
+.bundle/
+
+# Node tooling used for local linting/formatting
+node_modules/
+
+# Gemfile.lock is intentionally committed for reproducible CI builds.

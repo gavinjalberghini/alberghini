@@ -1,0 +1,34 @@
+# Site settings
+title: Gavin Alberghini
+tagline: Platform Engineer
+description: >-
+  Platform Engineer working across DevSecOps and MLOps — designing,
+  building, and operating cloud platform capabilities for software
+  engineers and data scientists.
+author: Gavin Alberghini
+
+# Served at the apex of alberghini.io (the Pantry landing page). Local
+# `task serve` and the container image both use this empty prefix.
+baseurl: ""
+url: "https://alberghini.io"
+
+github_username: gavinjalberghini
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Taskfile.yml
+  - Dockerfile
+  - .dockerignore

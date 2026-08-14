@@ -1,0 +1,27 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-col">
+      <span class="brand-mark small">GA</span>
+      <p>{{ site.title }} &mdash; {{ site.tagline }}</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Elsewhere</p>
+      {% for link in site.data.profile.links %}
+        <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">This site</p>
+      <p class="muted">
+        Static Jekyll build, served from the
+        <a href="https://github.com/gavinjalberghini/Pantry" target="_blank" rel="noopener">Pantry</a>
+        homelab on Raspberry Pi workers behind a Cloudflare Tunnel.
+        Source is
+        <a href="https://github.com/gavinjalberghini/alberghini" target="_blank" rel="noopener">gavinjalberghini/alberghini</a>.
+      </p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; {{ site.time | date: '%Y' }} {{ site.data.profile.name }}.</span>
+  </div>
+</footer>

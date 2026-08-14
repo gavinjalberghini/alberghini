@@ -1,0 +1,19 @@
+{
+  "name": "alberghini",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Linting and formatting tooling for the resume site.",
+  "scripts": {
+    "lint": "npm run lint:md && npm run lint:scss && npm run lint:format",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#_site\" \"#vendor\"",
+    "lint:scss": "stylelint \"_sass/**/*.scss\"",
+    "lint:format": "prettier --check \"**/*.{json,yml,yaml,scss}\"",
+    "format": "prettier --write \"**/*.{json,yml,yaml,scss}\" && stylelint \"_sass/**/*.scss\" --fix"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.18.1",
+    "prettier": "^3.6.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard-scss": "^16.0.0"
+  }
+}

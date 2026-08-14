@@ -1,0 +1,162 @@
+---
+layout: default
+title: Home
+permalink: /
+---
+
+{% assign p = site.data.profile %}
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ p.role }}</p>
+    <h1>{{ p.name }}</h1>
+    <p class="lede">{{ p.lede }}</p>
+    {% if p.status %}
+      <p class="hero-status"><code>{{ p.status }}</code></p>
+    {% endif %}
+    <ul class="hero-links">
+      {% for link in p.links %}
+        <li>
+          <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About</h2>
+    {% for para in p.about %}
+      <p class="prose">{{ para }}</p>
+    {% endfor %}
+
+    <h3 class="stack-heading">Tech stack</h3>
+    <ul class="stack">
+      {% for item in p.stack %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="wrap">
+    <h2>Work &amp; education</h2>
+    <ol class="timeline">
+      {% for job in p.experience %}
+        <li class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-dates">{{ job.dates }}</span>
+            <span class="timeline-org">{{ job.org }}</span>
+          </div>
+          <div class="timeline-body">
+            <h3>{{ job.title }}</h3>
+            <p>{{ job.summary }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+
+    <h3 class="stack-heading">Mentoring &amp; volunteering</h3>
+    <ul class="mentoring">
+      {% for item in p.mentoring %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="research" class="section">
+  <div class="wrap">
+    <h2>Research</h2>
+    <p class="section-intro">
+      Published work on continual learning for multi-label data streams that
+      change over time — ensembles of self-adjusting nearest-neighbor
+      classifiers that detect and adapt to concept drift.
+    </p>
+    <div class="card-grid">
+      {% for paper in p.research %}
+        <article class="card">
+          <p class="card-kicker">{{ paper.kind }}</p>
+          <h3>{{ paper.title }}</h3>
+          <p class="card-meta">{{ paper.authors }}</p>
+          <p class="card-meta">{{ paper.venue }}</p>
+          <p>{{ paper.summary }}</p>
+          <p class="card-links">
+            {% if paper.doi %}
+              <a href="{{ paper.doi }}" target="_blank" rel="noopener">DOI</a>
+            {% endif %}
+            {% if paper.researchgate %}
+              <a href="{{ paper.researchgate }}" target="_blank" rel="noopener">ResearchGate</a>
+            {% endif %}
+            {% if paper.url %}
+              <a href="{{ paper.url }}" target="_blank" rel="noopener">Thesis</a>
+            {% endif %}
+            {% if paper.code %}
+              <a href="{{ paper.code }}" target="_blank" rel="noopener">Code</a>
+            {% endif %}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="wrap">
+    <h2>Selected projects</h2>
+    <p class="section-intro">
+      Pinned work from
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">github.com/{{ site.github_username }}</a>,
+      plus the repos that run this site.
+    </p>
+    <div class="card-grid projects">
+      {% for proj in p.projects %}
+        <a class="card card-link" href="{{ proj.url }}" target="_blank" rel="noopener">
+          <p class="card-kicker">{{ proj.lang }}</p>
+          <h3>{{ proj.name }}</h3>
+          <p>{{ proj.summary }}</p>
+          <span class="card-more">View on GitHub &rarr;</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="stats" class="section">
+  <div class="wrap">
+    <h2>GitHub</h2>
+    <p class="section-intro">
+      Live stats for
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">@{{ site.github_username }}</a>,
+      rendered by
+      <a href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener">github-readme-stats</a>
+      and
+      <a href="https://github.com/DenverCoder1/github-readme-streak-stats" target="_blank" rel="noopener">streak-stats</a>.
+    </p>
+    <div class="stats-grid">
+      <img
+        class="stats-card"
+        src="https://github-readme-stats.vercel.app/api?username={{ site.github_username }}&amp;show_icons=true&amp;hide_border=true&amp;bg_color=12151c&amp;title_color=5eead4&amp;text_color=e7eaf0&amp;icon_color=5eead4&amp;ring_color=5eead4"
+        alt="GitHub stats for {{ site.github_username }}: stars, commits, pull requests, and issues"
+        width="495"
+        height="195"
+        loading="lazy">
+      <img
+        class="stats-card"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username={{ site.github_username }}&amp;layout=compact&amp;hide_border=true&amp;bg_color=12151c&amp;title_color=5eead4&amp;text_color=e7eaf0"
+        alt="Most-used languages on GitHub for {{ site.github_username }}"
+        width="300"
+        height="195"
+        loading="lazy">
+      <img
+        class="stats-card stats-wide"
+        src="https://streak-stats.demolab.com?user={{ site.github_username }}&amp;hide_border=true&amp;background=12151c&amp;ring=5eead4&amp;fire=5eead4&amp;currStreakLabel=5eead4&amp;sideLabels=8b93a7&amp;dates=8b93a7&amp;currStreakNum=e7eaf0&amp;sideNums=e7eaf0&amp;stroke=1c2230"
+        alt="GitHub contribution streak for {{ site.github_username }}"
+        width="495"
+        height="195"
+        loading="lazy">
+    </div>
+  </div>
+</section>

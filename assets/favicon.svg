@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Gavin Alberghini">
+  <rect width="100" height="100" rx="22" fill="#0a0c10"/>
+  <rect x="3" y="3" width="94" height="94" rx="20" fill="none" stroke="#5eead4" stroke-width="3"/>
+  <text x="50" y="56" text-anchor="middle" dominant-baseline="central"
+        font-family="'Space Grotesk', 'Segoe UI', system-ui, sans-serif"
+        font-size="36" font-weight="700" letter-spacing="1" fill="#5eead4">GA</text>
+</svg>

@@ -1,0 +1,7 @@
+---
+# Front matter (even if empty) tells Jekyll to process this SCSS file.
+# Actual styles live in _sass/main.scss so linters can parse them without
+# tripping on this Jekyll front matter.
+---
+
+@use "main";

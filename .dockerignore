@@ -1,0 +1,12 @@
+# Keep the build context small and the image reproducible: only site
+# sources go in. Dependencies are installed inside the build stage.
+.git
+.github
+_site
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+node_modules
+vendor
+Dockerfile
+.dockerignore

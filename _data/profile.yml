@@ -1,0 +1,170 @@
+name: Gavin Alberghini
+role: Platform Engineer
+location: Virginia, USA
+status: 'String status = "☠️ ☕ 💻";'
+lede: >-
+  I design, build, and operate platform capabilities in the cloud so
+  software engineers and data scientists can ship with less friction —
+  across DevSecOps, MLOps, and the homelab that hosts this site.
+
+about:
+  - >-
+    Lead DevSecOps Engineer at MITRE. I work across cloud, DevSecOps, and
+    MLOps to stand up production-grade platforms — serverless and
+    open-source — and partner with the teams that run on them.
+  - >-
+    Before that I studied computer science at Virginia Commonwealth
+    University (B.S. 2020, M.S. 2021) and published research on continual
+    learning for multi-label drifting data streams.
+
+links:
+  - label: GitHub
+    url: https://github.com/gavinjalberghini
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/gavin-alberghini-76231a1b2
+  - label: ResearchGate
+    url: https://www.researchgate.net/publication/358109395_Adaptive_Ensemble_of_Self-Adjusting_Nearest_Neighbor_Subspaces_for_Multi-Label_Drifting_Data_Streams
+  - label: Paper (DOI)
+    url: https://doi.org/10.1016/j.neucom.2022.01.075
+
+stack:
+  - Shell
+  - YAML
+  - Python
+  - Java
+  - AWS
+  - GitLab CI
+  - GitHub Actions
+  - Bitbucket
+  - Docker
+  - Kubernetes
+  - Ansible
+  - Terraform
+  - Prometheus
+  - Rancher
+  - SonarQube
+  - Bitwarden
+  - Vagrant
+  - Raspberry Pi
+  - Jira
+
+experience:
+  - org: MITRE
+    title: Lead DevSecOps Engineer
+    dates: Present
+    summary: >-
+      Design and operate platform architecture across cloud, DevSecOps,
+      and MLOps — containerized workloads, automation, SRE, and the
+      machine-learning lifecycle — so internal teams can ship on a
+      verified, production-grade foundation.
+
+  - org: Virginia Commonwealth University
+    title: M.S. Computer Science
+    dates: 2021
+    summary: >-
+      Thesis on continual learning for multi-label drifting data streams
+      (homogeneous ensemble of self-adjusting nearest neighbors), advised
+      by Alberto Cano. Extended into the AESAKNNS ensemble published in
+      Neurocomputing.
+
+  - org: Virginia Commonwealth University
+    title: B.S. Computer Science
+    dates: 2017–2020
+    summary: >-
+      Undergraduate research and teaching support in the Department of
+      Computer Science.
+
+mentoring:
+  - Robot Programming Mentor, Collegiate School FIRST Robotics Competition
+  - Robot Programming Mentor, Hickory High School FIRST Robotics Competition
+  - Unity Mentor, Grassfield High School STEM Academy
+  - Machine Learning Research Advisor, Hampton Governor's School Senior Capstone
+  - Mentor, Old Dominion University Senior Capstone
+  - FRC Event Volunteer (Control Systems Advisor), FRC Portsmouth events
+
+research:
+  - kind: Journal article
+    title: >-
+      Adaptive ensemble of self-adjusting nearest neighbor subspaces for
+      multi-label drifting data streams
+    venue: Neurocomputing, vol. 481, pp. 228–248, 2022
+    authors: Gavin Alberghini, Sylvio Barbon Junior, Alberto Cano
+    doi: https://doi.org/10.1016/j.neucom.2022.01.075
+    researchgate: https://www.researchgate.net/publication/358109395_Adaptive_Ensemble_of_Self-Adjusting_Nearest_Neighbor_Subspaces_for_Multi-Label_Drifting_Data_Streams
+    code: https://github.com/canoalberto/AESAKNNS
+    summary: >-
+      AESAKNNS is an ensemble of self-adjusting kNN classifiers for
+      multi-label streams that drift over time. Each base learner trains
+      on its own feature subspace and an online-bagging sample; ADWIN
+      detectors watch for concept drift and a background ensemble is
+      trained on new subspaces so the most accurate classifiers can
+      replace the current set. Evaluated against 30 classifiers on 30
+      datasets and 12 metrics.
+
+  - kind: Master's thesis
+    title: >-
+      Continual learning for multi-label drifting data streams using
+      homogeneous ensemble of self-adjusting nearest neighbors
+    venue: Virginia Commonwealth University, May 2021
+    authors: Gavin Alberghini
+    url: https://scholarscompass.vcu.edu/cgi/viewcontent.cgi?article=7725&context=etd
+    summary: >-
+      The thesis that the Neurocomputing paper grew out of — a
+      homogeneous ensemble of MLSAkNN base classifiers for continual
+      multi-label learning under concept drift.
+
+projects:
+  - name: Hack-Heist
+    url: https://github.com/gavinjalberghini/Hack-Heist
+    lang: Java
+    summary: >-
+      CMSC 355 semester-long team project — an Android game that teaches
+      Java to beginners.
+
+  - name: NNSB-CCIPT
+    url: https://github.com/gavinjalberghini/NNSB-CCIPT
+    lang: Python
+    summary: >-
+      Climate Change Impact Prediction Tool for long-term impacts on the
+      Newport News / Hampton Roads area.
+
+  - name: Operating-System-Simulation
+    url: https://github.com/gavinjalberghini/Operating-System-Simulation
+    lang: Java
+    summary: >-
+      OS simulator used as a test bed for exploring existing test-coverage
+      tools.
+
+  - name: Protein-Interaction-Classifier
+    url: https://github.com/gavinjalberghini/Protein-Interaction-Classifier
+    lang: Python
+    summary: >-
+      Classifiers (Python + RapidMiner) that predict levels of protein
+      interaction with DNA and RNA.
+
+  - name: Shifting-Reality-VR
+    url: https://github.com/gavinjalberghini/Shifting-Reality-VR
+    lang: C#
+    summary: >-
+      Unity world-building exploration for the HTC Vive.
+
+  - name: Unity-Learning-Objectives
+    url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
+    lang: C#
+    summary: >-
+      Unity workshops that fold different hardware and software tools
+      into world-building.
+
+  - name: FRC-SS
+    url: https://github.com/gavinjalberghini/FRC-SS
+    lang: HTML
+    summary: >-
+      An opinionated playbook for running an FRC robotics team — also
+      hosted on this cluster at /frc-ss.
+
+  - name: Pantry
+    url: https://github.com/gavinjalberghini/Pantry
+    lang: YAML
+    summary: >-
+      The homelab cluster this site runs on — k3s on Raspberry Pi
+      workers, Cloudflare Tunnel, and GitOps-style manifests.
