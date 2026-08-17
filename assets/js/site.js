@@ -1,22 +1,6 @@
 (function () {
   "use strict";
 
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function spotlight() {
-    if (reduce || window.matchMedia("(pointer: coarse)").matches) return;
-    var root = document.documentElement;
-    window.addEventListener(
-      "pointermove",
-      function (e) {
-        root.style.setProperty("--spot-x", e.clientX + "px");
-        root.style.setProperty("--spot-y", e.clientY + "px");
-      },
-      { passive: true }
-    );
-    document.body.classList.add("has-spot");
-  }
-
   function navSpy() {
     var links = Array.prototype.slice.call(document.querySelectorAll(".rail-nav a"));
     var ids = links
@@ -84,6 +68,7 @@
     var points = [];
     var k = 3;
     var drifts = 0;
+    var cursor = null;
 
     function seed() {
       points = [];
@@ -105,21 +90,32 @@
       return dx * dx + dy * dy;
     }
 
-    function classify(x, y) {
-      if (!points.length) return 0;
-      var scored = points
+    function neighborsAt(x, y) {
+      return points
         .map(function (p) {
-          return { label: p.label, d: dist(p, { x: x, y: y }) };
+          return { point: p, d: dist(p, { x: x, y: y }) };
         })
         .sort(function (a, b) {
           return a.d - b.d;
         })
         .slice(0, k);
+    }
+
+    function classify(x, y) {
+      if (!points.length) return 0;
       var votes = [0, 0];
-      scored.forEach(function (s) {
-        votes[s.label] += 1;
+      neighborsAt(x, y).forEach(function (s) {
+        votes[s.point.label] += 1;
       });
       return votes[1] > votes[0] ? 1 : 0;
+    }
+
+    function posFromEvent(e) {
+      var rect = canvas.getBoundingClientRect();
+      return {
+        x: (e.clientX - rect.left) / rect.width,
+        y: (e.clientY - rect.top) / rect.height
+      };
     }
 
     function draw() {
@@ -127,6 +123,7 @@
       var h = canvas.height;
       var step = 16;
       var x, y, c;
+      var nearest = cursor ? neighborsAt(cursor.x, cursor.y) : [];
       ctx.clearRect(0, 0, w, h);
       for (y = 0; y < h; y += step) {
         for (x = 0; x < w; x += step) {
@@ -135,11 +132,33 @@
           ctx.fillRect(x, y, step, step);
         }
       }
-      points.forEach(function (p) {
+      if (cursor && nearest.length) {
+        nearest.forEach(function (s) {
+          ctx.beginPath();
+          ctx.moveTo(cursor.x * w, cursor.y * h);
+          ctx.lineTo(s.point.x * w, s.point.y * h);
+          ctx.strokeStyle = s.point.label ? "rgba(94, 234, 212, 0.85)" : "rgba(251, 146, 60, 0.85)";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        });
         ctx.beginPath();
-        ctx.arc(p.x * w, p.y * h, 5, 0, Math.PI * 2);
+        ctx.arc(cursor.x * w, cursor.y * h, 4, 0, Math.PI * 2);
+        ctx.fillStyle = classify(cursor.x, cursor.y) ? "#5eead4" : "#fb923c";
+        ctx.fill();
+      }
+      points.forEach(function (p) {
+        var hit = nearest.some(function (s) {
+          return s.point === p;
+        });
+        ctx.beginPath();
+        ctx.arc(p.x * w, p.y * h, hit ? 7 : 5, 0, Math.PI * 2);
         ctx.fillStyle = p.label ? "#5eead4" : "#fb923c";
         ctx.fill();
+        if (hit) {
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = "#e7eaf0";
+          ctx.stroke();
+        }
       });
     }
 
@@ -149,11 +168,26 @@
         : points.length + " points · k=3";
     }
 
-    canvas.addEventListener("click", function (e) {
-      var rect = canvas.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width;
-      var y = (e.clientY - rect.top) / rect.height;
-      points.push({ x: x, y: y, label: classify(x, y) });
+    canvas.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+
+    canvas.addEventListener("pointermove", function (e) {
+      cursor = posFromEvent(e);
+      draw();
+    });
+
+    canvas.addEventListener("pointerleave", function () {
+      cursor = null;
+      draw();
+    });
+
+    canvas.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0 && e.button !== 2) return;
+      e.preventDefault();
+      var p = posFromEvent(e);
+      points.push({ x: p.x, y: p.y, label: e.button === 2 ? 1 : 0 });
+      cursor = p;
       draw();
       setStatus();
     });
@@ -180,7 +214,6 @@
     setStatus();
   }
 
-  spotlight();
   navSpy();
   stackBoard();
   driftSketch();

@@ -85,7 +85,10 @@ permalink: /
   <ul class="mentor-list">
     {% for role in p.mentoring.roles %}
       <li>
-        <span class="job-title">{{ role.title }}</span>
+        <span class="job-title">
+          {% if role.focus %}<span class="mentor-focus">{{ role.focus }}</span>{% endif %}
+          {{ role.title }}
+        </span>
         <span class="job-meta">
           <span>{{ role.org }}</span>
           <span>{{ role.dates }}</span>
@@ -150,8 +153,8 @@ permalink: /
     <div class="drift-head">
       <p class="subhead drift-label">Concept drift</p>
       <p class="muted drift-help">
-        Click to drop a point. Drift remaps the labels — the thing the paper
-        is about. k=3.
+        Left click drops orange, right click drops teal. Lines go to the
+        three nearest neighbors. Drift remaps the labels.
       </p>
     </div>
     <canvas class="drift-canvas" width="640" height="360" aria-label="Interactive kNN concept-drift sketch"></canvas>

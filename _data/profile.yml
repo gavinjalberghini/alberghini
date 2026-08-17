@@ -12,9 +12,10 @@ about:
     DevSecOps group and own CRE — an AWS / EKS environment with a
     seven-figure budget, doing data science on petabytes of FAA data.
   - >-
-    FIRST alumnus since 2012. I still mentor high-school programmers
-    and work control systems at district events. VCU B.S. 2020
-    (summa) and M.S. 2021; the paper below is the thesis, published.
+    I mentor outside the day job: Unity at Grassfield STEM, ML
+    capstones at the Governor's School, and an ODU senior project —
+    plus FIRST since 2012. VCU B.S. 2020 (summa) and M.S. 2021;
+    the paper below is the thesis, published.
 
 links:
   - label: GitHub
@@ -142,28 +143,41 @@ education:
     honors: Summa cum laude · GPA 3.966
 
 mentoring:
-  intro: FIRST since 2012 — alumnus, mentor, event volunteer.
+  intro: >-
+    Unity at a STEM academy, ML at the Governor's School, an ODU
+    capstone — and FIRST since 2012.
   roles:
+    - title: Unity Mentor
+      org: Grassfield High School STEM Academy
+      focus: Unity
+      dates: Ongoing
+    - title: Machine Learning Research Advisor
+      org: Hampton Governor's School Senior Capstone
+      focus: ML
+      dates: May 2021 — present
+    - title: Mentor
+      org: Old Dominion University Senior Capstone
+      focus: University
+      dates: Ongoing
+    - title: Robot Programming Mentor
+      org: Collegiate School FRC
+      focus: FRC
+      dates: Ongoing
+    - title: Robot Programming Mentor
+      org: Hickory High School FRC
+      focus: FRC
+      dates: Ongoing
     - title: Control System Advisor
-      org: FRC
+      org: FRC Portsmouth / Chesapeake
+      focus: FRC
       dates: 2023 — present
       events:
         - Portsmouth 2023, 2024
         - Chesapeake 2026
     - title: Robot Inspector
-      org: FRC
+      org: FRC Southwest Virginia
+      focus: FRC
       dates: 2018
-      events:
-        - Southwest Virginia
-    - title: Programming mentor
-      org: Collegiate School & Hickory HS
-      dates: Ongoing
-    - title: Industry mentor
-      org: Hampton Roads Governor's School
-      dates: May 2021 — present
-    - title: Mentor / volunteer
-      org: Grassfield STEM, ODU, FRC Portsmouth
-      dates: Ongoing
 
 research:
   - kind: Neurocomputing, April 2022
