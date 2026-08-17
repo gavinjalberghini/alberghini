@@ -5,7 +5,9 @@ version: "3"
 
 vars:
   SITE_DIR: _site
-  BASEURL: ""
+  # Must match `baseurl` in _config.yml. html-proofer strips this so
+  # internal links like /me/#about resolve against the built _site directory.
+  BASEURL: /me
   IMAGE: ghcr.io/gavinjalberghini/alberghini
 
 tasks:
@@ -38,7 +40,7 @@ tasks:
       - bundle exec jekyll build --trace
 
   serve:
-    desc: Serve the site locally with live reload (http://localhost:4000/)
+    desc: Serve the site locally with live reload (http://localhost:4000{{.BASEURL}}/)
     cmds:
       - bundle exec jekyll serve --livereload
 
@@ -53,7 +55,7 @@ tasks:
       - docker build -t {{.IMAGE}}:local .
 
   docker:serve:
-    desc: Run the container locally (http://localhost:8080/)
+    desc: Run the container locally (http://localhost:8080/me/)
     deps: [docker:build]
     cmds:
       - docker run --rm -p 8080:8080 {{.IMAGE}}:local
@@ -102,6 +104,7 @@ tasks:
       - >-
         bundle exec htmlproofer {{.SITE_DIR}}
         --disable-external
+        --swap-urls "^{{.BASEURL}}:"
         --ignore-urls "/^https:\\/\\/(github-readme-stats|streak-stats)\\./"
 
   test:external:
@@ -110,6 +113,7 @@ tasks:
     cmds:
       - >-
         bundle exec htmlproofer {{.SITE_DIR}}
+        --swap-urls "^{{.BASEURL}}:"
         --ignore-status-codes "0,403,429,503"
         --ignore-urls "/^https:\\/\\/(github-readme-stats|streak-stats)\\./"
 

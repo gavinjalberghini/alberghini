@@ -3,9 +3,9 @@
 # to GHCR by .github/workflows/container.yml and pulled by the Raspberry Pi
 # workers, so it must be built for linux/arm64.
 #
-# This site is the landing page at the apex of alberghini.io — requests
-# arrive as /... (no path prefix). Other apps (/frc-ss, /archive, ...) are
-# claimed by more-specific tunnel rules and never reach this container.
+# The Cloudflare Tunnel forwards paths unchanged (<domain>/me/x arrives
+# as /me/x), so the site is built with that baseurl AND nested under the
+# same directory in the nginx web root.
 
 # ---- Build stage: compile the Jekyll site --------------------------------
 FROM ruby:3.3-alpine AS build
@@ -25,7 +25,8 @@ RUN bundle install
 
 COPY . .
 
-ARG BASEURL=
+# Path prefix the site is served under. Baked into all generated links.
+ARG BASEURL=/me
 RUN JEKYLL_ENV=production bundle exec jekyll build --baseurl "$BASEURL" --trace
 
 # ---- Runtime stage: unprivileged nginx -----------------------------------
@@ -34,6 +35,9 @@ RUN JEKYLL_ENV=production bundle exec jekyll build --baseurl "$BASEURL" --trace
 FROM nginxinc/nginx-unprivileged:1.27-alpine
 
 LABEL org.opencontainers.image.source="https://github.com/gavinjalberghini/alberghini" \
-      org.opencontainers.image.description="Gavin Alberghini resume site (landing page at /)"
+      org.opencontainers.image.description="Gavin Alberghini resume site (served under /me)"
 
-COPY --from=build /site/_site /usr/share/nginx/html
+ARG BASEURL=/me
+# Nest the output under the prefix: /me/index.html must exist at that
+# literal path because the tunnel does not strip it.
+COPY --from=build /site/_site /usr/share/nginx/html${BASEURL}

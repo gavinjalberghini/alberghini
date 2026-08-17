@@ -1,8 +1,8 @@
 # alberghini
 
 Personal resume site for [Gavin Alberghini](https://github.com/gavinjalberghini).
-A static Jekyll build, served as the landing page at
-**[alberghini.io](https://alberghini.io)** from the
+A static Jekyll build, served at
+**[alberghini.io/me](https://alberghini.io/me)** from the
 [Pantry](https://github.com/gavinjalberghini/Pantry) homelab cluster.
 
 Content lives in `_data/profile.yml` (bio, work, research, projects) and
@@ -39,7 +39,7 @@ with no arguments to list everything.
 
 ```bash
 task install   # Node tools + Ruby gems into ./vendor/bundle
-task serve     # http://localhost:4000/
+task serve     # http://localhost:4000/me/
 ```
 
 | Command             | What it does                                      |
@@ -51,7 +51,7 @@ task serve     # http://localhost:4000/
 | `task test`         | Build, then validate HTML and internal links      |
 | `task check`        | `lint` + `build` + `test`                         |
 | `task docker:build` | Build the image for your local architecture       |
-| `task docker:serve` | Run it at <http://localhost:8080/>                |
+| `task docker:serve` | Run it at <http://localhost:8080/me/>             |
 | `task docker:push`  | Manual arm64 build + push to GHCR                 |
 
 ## Self-hosting (Pantry homelab)
@@ -64,9 +64,9 @@ How the image works (`Dockerfile`):
 
 - A multi-stage build compiles the site with Ruby 3.3 and hands `_site/`
   to **unprivileged nginx** (uid 101, port 8080).
-- Unlike path-prefixed apps (`/frc-ss`, …), this site is the **apex
-  landing page**. The tunnel sends unmatched `alberghini.io` paths here
-  unchanged, so files live at the nginx web root (`/index.html`).
+- The tunnel forwards paths **unchanged** — a request for
+  `alberghini.io/me/x` reaches the container as `/me/x` — so the image
+  bakes in `baseurl: /me` and nests the files under `/me` in the web root.
 - Built for **`linux/arm64`** because the cluster's workers are Raspberry
   Pis.
 

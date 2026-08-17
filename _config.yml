@@ -7,9 +7,9 @@ description: >-
   engineers and data scientists.
 author: Gavin Alberghini
 
-# Served at the apex of alberghini.io (the Pantry landing page). Local
-# `task serve` and the container image both use this empty prefix.
-baseurl: ""
+# Served at https://alberghini.io/me — the tunnel forwards that prefix
+# unchanged, so local `task serve` and the container image both use it.
+baseurl: "/me"
 url: "https://alberghini.io"
 
 github_username: gavinjalberghini
