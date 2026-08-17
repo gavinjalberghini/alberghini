@@ -75,7 +75,7 @@ experience:
   - org: MITRE
     title: Group Leader · CRE Product Owner
     dates: Jun 2025 — Present
-    location: Hampton, VA
+    location: Williamsburg, VA
     summary: >-
       Six engineers, AWS / EKS, budget over $1M, petabytes of FAA data.
     bullets:
@@ -91,7 +91,7 @@ experience:
   - org: MITRE
     title: Lead DevSecOps Engineer
     dates: Mar 2023 — Present
-    location: Hampton, VA
+    location: Richmond, then Williamsburg, VA
     summary: >-
       CRE platform architecture on EKS. Outcomes I can share:
     bullets:
@@ -121,7 +121,7 @@ experience:
       - IAM
 
   - org: Virginia Commonwealth University
-    title: Lecture, lab & research assistant
+    title: Lecture, Lab & Research Assistant
     dates: 2019 — 2021
     location: Richmond, VA
     summary: Teaching support; the AESAKNNS paper started in that lab.
@@ -144,40 +144,46 @@ education:
 
 mentoring:
   intro: >-
-    Unity at a STEM academy, ML at the Governor's School, an ODU
-    capstone — and FIRST since 2012.
+    Unity at a STEM academy, machine learning at the Governor's School,
+    an ODU capstone, and FIRST.
   roles:
     - title: Unity Mentor
       org: Grassfield High School STEM Academy
-      focus: Unity
-      dates: Ongoing
-    - title: Machine Learning Research Advisor
+      url: https://www.cpschools.com/o/gfh/page/governors-stem-academy
+    - title: Machine Learning Advisor
       org: Hampton Governor's School Senior Capstone
-      focus: ML
-      dates: May 2021 — present
-    - title: Mentor
+      url: https://nhrec.org/gsst/
+    - title: Capstone Mentor
       org: Old Dominion University Senior Capstone
-      focus: University
-      dates: Ongoing
+      url: https://www.odu.edu/
     - title: Robot Programming Mentor
-      org: Collegiate School FRC
-      focus: FRC
-      dates: Ongoing
+      org: Collegiate School
+      url: https://collegiate-va.org/
     - title: Robot Programming Mentor
-      org: Hickory High School FRC
-      focus: FRC
-      dates: Ongoing
+      org: Hickory High School
+      url: https://cpschools.com/o/hhs
     - title: Control System Advisor
-      org: FRC Portsmouth / Chesapeake
-      focus: FRC
-      dates: 2023 — present
-      events:
-        - Portsmouth 2023, 2024
-        - Chesapeake 2026
+      org: FRC Portsmouth and Chesapeake
+      url: https://www.firstchesapeake.org/frc
     - title: Robot Inspector
       org: FRC Southwest Virginia
-      focus: FRC
-      dates: 2018
+      url: https://www.firstchesapeake.org/frc
+
+hobbies:
+  intro: Making, machines, and the shop.
+  items:
+    - name: 3D Printing
+      note: Parts, fixtures, and models.
+    - name: CAD
+      note: Designs for the printer and the shop.
+    - name: Home Lab
+      note: Servers, storage, and the network under them.
+    - name: Raspberry Pi
+      note: Small boards and the things they run.
+    - name: Motorcycle
+      note: Riding, then the work that follows.
+    - name: Automotive Maintenance
+      note: Shop work on the cars as well as the bike.
 
 research:
   - kind: Neurocomputing, April 2022
@@ -216,11 +222,22 @@ projects:
     kind: Research
     summary: Reference code for the Neurocomputing paper.
 
-archive:
+  - name: Unity Learning Objectives
+    url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
+    kind: Workshops
+    summary: Unity workshops that fold hardware into world-building.
+
+  - name: Shifting Reality VR
+    url: https://github.com/gavinjalberghini/Shifting-Reality-VR
+    kind: VR
+    summary: Unity world-building for the HTC Vive.
+
   - name: Hack-Heist
     url: https://github.com/gavinjalberghini/Hack-Heist
-    lang: Java
-    summary: Android game that teaches Java.
+    kind: Teaching
+    summary: Android game that teaches Java to beginners.
+
+archive:
   - name: NNSB-CCIPT
     url: https://github.com/gavinjalberghini/NNSB-CCIPT
     lang: Python
@@ -233,11 +250,3 @@ archive:
     url: https://github.com/gavinjalberghini/Protein-Interaction-Classifier
     lang: Python
     summary: Protein–DNA/RNA interaction classifiers.
-  - name: Shifting-Reality-VR
-    url: https://github.com/gavinjalberghini/Shifting-Reality-VR
-    lang: C#
-    summary: Unity for the HTC Vive.
-  - name: Unity-Learning-Objectives
-    url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
-    lang: C#
-    summary: Unity workshops for hardware-in-the-loop world-building.

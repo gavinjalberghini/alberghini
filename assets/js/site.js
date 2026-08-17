@@ -214,7 +214,208 @@
     setStatus();
   }
 
+  function ensembleSketch() {
+    var root = document.querySelector("[data-ensemble]");
+    if (!root) return;
+    var canvas = root.querySelector("canvas");
+    var status = root.querySelector("[data-ensemble-status]");
+    var voteRow = root.querySelector("[data-ensemble-votes]");
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    var points = [];
+    var bags = [];
+    var k = 3;
+    var nBags = 3;
+    var cursor = null;
+
+    function seedPoints() {
+      points = [];
+      var i;
+      for (i = 0; i < 28; i += 1) {
+        var left = i < 14;
+        points.push({
+          x: (left ? 0.22 : 0.72) + (Math.random() - 0.5) * 0.28,
+          y: 0.5 + (Math.random() - 0.5) * 0.55,
+          label: left ? 0 : 1
+        });
+      }
+    }
+
+    function resample() {
+      bags = [];
+      var b, i, pick;
+      for (b = 0; b < nBags; b += 1) {
+        var bag = [];
+        for (i = 0; i < points.length; i += 1) {
+          pick = points[Math.floor(Math.random() * points.length)];
+          bag.push(pick);
+        }
+        bags.push(bag);
+      }
+    }
+
+    function dist(a, b) {
+      var dx = a.x - b.x;
+      var dy = a.y - b.y;
+      return dx * dx + dy * dy;
+    }
+
+    function classifyBag(bag, x, y) {
+      if (!bag.length) return 0;
+      var scored = bag
+        .map(function (p) {
+          return { label: p.label, d: dist(p, { x: x, y: y }) };
+        })
+        .sort(function (a, b) {
+          return a.d - b.d;
+        })
+        .slice(0, k);
+      var votes = [0, 0];
+      scored.forEach(function (s) {
+        votes[s.label] += 1;
+      });
+      return votes[1] > votes[0] ? 1 : 0;
+    }
+
+    function votesAt(x, y) {
+      return bags.map(function (bag) {
+        return classifyBag(bag, x, y);
+      });
+    }
+
+    function majority(votes) {
+      var teal = 0;
+      votes.forEach(function (v) {
+        if (v) teal += 1;
+      });
+      return teal > votes.length / 2 ? 1 : 0;
+    }
+
+    function posFromEvent(e) {
+      var rect = canvas.getBoundingClientRect();
+      return {
+        x: (e.clientX - rect.left) / rect.width,
+        y: (e.clientY - rect.top) / rect.height
+      };
+    }
+
+    function paintVotes(votes) {
+      if (!voteRow) return;
+      voteRow.hidden = !cursor;
+      if (!cursor) return;
+      var i;
+      for (i = 0; i < nBags; i += 1) {
+        var el = voteRow.querySelector('[data-voter="' + i + '"]');
+        if (!el) continue;
+        el.setAttribute("data-label", String(votes[i]));
+      }
+      var call = voteRow.querySelector("[data-ensemble-call]");
+      if (call) call.setAttribute("data-label", String(majority(votes)));
+    }
+
+    function draw() {
+      var w = canvas.width;
+      var h = canvas.height;
+      var step = 16;
+      var x, y, votes, agree, c;
+      ctx.clearRect(0, 0, w, h);
+      for (y = 0; y < h; y += step) {
+        for (x = 0; x < w; x += step) {
+          votes = votesAt(x / w, y / h);
+          c = majority(votes);
+          agree = votes.every(function (v) {
+            return v === c;
+          });
+          ctx.fillStyle = c
+            ? agree
+              ? "rgba(94, 234, 212, 0.2)"
+              : "rgba(94, 234, 212, 0.08)"
+            : agree
+              ? "rgba(251, 146, 60, 0.2)"
+              : "rgba(251, 146, 60, 0.08)";
+          ctx.fillRect(x, y, step, step);
+        }
+      }
+      if (cursor) {
+        votes = votesAt(cursor.x, cursor.y);
+        paintVotes(votes);
+        votes.forEach(function (v, i) {
+          var ang = (-Math.PI / 2) + (i * (Math.PI * 2)) / nBags;
+          var px = cursor.x * w + Math.cos(ang) * 16;
+          var py = cursor.y * h + Math.sin(ang) * 16;
+          ctx.beginPath();
+          ctx.arc(px, py, 5, 0, Math.PI * 2);
+          ctx.fillStyle = v ? "#5eead4" : "#fb923c";
+          ctx.fill();
+          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = "#e7eaf0";
+          ctx.stroke();
+        });
+        ctx.beginPath();
+        ctx.arc(cursor.x * w, cursor.y * h, 6, 0, Math.PI * 2);
+        ctx.fillStyle = majority(votes) ? "#5eead4" : "#fb923c";
+        ctx.fill();
+      } else if (voteRow) {
+        voteRow.hidden = true;
+      }
+      points.forEach(function (p) {
+        ctx.beginPath();
+        ctx.arc(p.x * w, p.y * h, 5, 0, Math.PI * 2);
+        ctx.fillStyle = p.label ? "#5eead4" : "#fb923c";
+        ctx.fill();
+      });
+    }
+
+    function setStatus() {
+      status.textContent = nBags + " bags · " + points.length + " points · k=3";
+    }
+
+    canvas.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+
+    canvas.addEventListener("pointermove", function (e) {
+      cursor = posFromEvent(e);
+      draw();
+    });
+
+    canvas.addEventListener("pointerleave", function () {
+      cursor = null;
+      draw();
+    });
+
+    canvas.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0 && e.button !== 2) return;
+      e.preventDefault();
+      var p = posFromEvent(e);
+      points.push({ x: p.x, y: p.y, label: e.button === 2 ? 1 : 0 });
+      resample();
+      cursor = p;
+      draw();
+      setStatus();
+    });
+
+    root.querySelector("[data-ensemble-bag]").addEventListener("click", function () {
+      resample();
+      draw();
+    });
+
+    root.querySelector("[data-ensemble-reset]").addEventListener("click", function () {
+      seedPoints();
+      resample();
+      draw();
+      setStatus();
+    });
+
+    seedPoints();
+    resample();
+    draw();
+    setStatus();
+  }
+
   navSpy();
   stackBoard();
   driftSketch();
+  ensembleSketch();
 })();

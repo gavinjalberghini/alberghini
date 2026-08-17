@@ -36,7 +36,7 @@ permalink: /
   <ol class="jobs">
     {% for job in p.experience %}
       <li>
-        <details class="job"{% if forloop.first %} open{% endif %}>
+        <details class="job">
           <summary>
             <span class="job-title">{{ job.title }} · {{ job.org }}</span>
             <span class="job-meta">
@@ -63,12 +63,14 @@ permalink: /
       </li>
     {% endfor %}
   </ol>
+</section>
 
-  <h3 class="subhead">Education</h3>
+<section id="education" class="section">
+  <h2><span class="section-num">03</span> Education</h2>
   <ol class="edu">
     {% for ed in p.education %}
       <li>
-        <span class="job-title">{{ ed.degree }}</span>
+        <span class="job-title">{{ ed.degree }} · {{ ed.school }}</span>
         <span class="job-meta">
           <span>{{ ed.dates }}</span>
           <span>{{ ed.concentration }}</span>
@@ -80,20 +82,17 @@ permalink: /
 </section>
 
 <section id="mentoring" class="section">
-  <h2><span class="section-num">03</span> Mentoring</h2>
+  <h2><span class="section-num">04</span> Mentoring</h2>
   <p class="prose">{{ p.mentoring.intro }}</p>
   <ul class="mentor-list">
     {% for role in p.mentoring.roles %}
       <li>
-        <span class="job-title">
-          {% if role.focus %}<span class="mentor-focus">{{ role.focus }}</span>{% endif %}
-          {{ role.title }}
-        </span>
+        <span class="job-title">{{ role.title }}</span>
         <span class="job-meta">
-          <span>{{ role.org }}</span>
-          <span>{{ role.dates }}</span>
-          {% if role.events %}
-            <span>{{ role.events | join: " · " }}</span>
+          {% if role.url %}
+            <a href="{{ role.url }}" target="_blank" rel="noopener">{{ role.org }}</a>
+          {% else %}
+            {{ role.org }}
           {% endif %}
         </span>
       </li>
@@ -102,7 +101,7 @@ permalink: /
 </section>
 
 <section id="work" class="section">
-  <h2><span class="section-num">04</span> Selected work</h2>
+  <h2><span class="section-num">05</span> Selected work</h2>
   <div class="card-grid">
     {% for proj in p.projects %}
       <article class="card">
@@ -134,7 +133,7 @@ permalink: /
 </section>
 
 <section id="research" class="section">
-  <h2><span class="section-num">05</span> Research</h2>
+  <h2><span class="section-num">06</span> Research</h2>
   {% for paper in p.research %}
     <article class="card research-card">
       <p class="card-kicker">{{ paper.kind }}</p>
@@ -164,4 +163,39 @@ permalink: /
       <span class="muted" data-drift-status>Ready</span>
     </div>
   </div>
+
+  <div class="drift ensemble" data-ensemble>
+    <div class="drift-head">
+      <p class="subhead drift-label">Ensemble</p>
+      <p class="muted drift-help">
+        Three bagged kNNs vote. Same clicks as above. Resample draws
+        new bags — the paper's online-bagging idea, just slower.
+      </p>
+    </div>
+    <canvas class="drift-canvas" width="640" height="360" aria-label="Interactive bagged kNN ensemble sketch"></canvas>
+    <div class="ensemble-votes" data-ensemble-votes hidden>
+      <span data-voter="0">A</span>
+      <span data-voter="1">B</span>
+      <span data-voter="2">C</span>
+      <span class="ensemble-call" data-ensemble-call>Vote</span>
+    </div>
+    <div class="drift-actions">
+      <button type="button" data-ensemble-bag>Resample bags</button>
+      <button type="button" data-ensemble-reset>Reset</button>
+      <span class="muted" data-ensemble-status>Ready</span>
+    </div>
+  </div>
+</section>
+
+<section id="hobbies" class="section">
+  <h2><span class="section-num">07</span> Hobbies</h2>
+  <p class="prose">{{ p.hobbies.intro }}</p>
+  <ul class="hobby-list">
+    {% for item in p.hobbies.items %}
+      <li>
+        <span class="job-title">{{ item.name }}</span>
+        <span class="job-meta">{{ item.note }}</span>
+      </li>
+    {% endfor %}
+  </ul>
 </section>
