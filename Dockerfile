@@ -41,3 +41,5 @@ ARG BASEURL=/me
 # Nest the output under the prefix: /me/index.html must exist at that
 # literal path because the tunnel does not strip it.
 COPY --from=build /site/_site /usr/share/nginx/html${BASEURL}
+# Relative /me → /me/ so the tunnel is not sent to :8080.
+COPY nginx-default.conf /etc/nginx/conf.d/default.conf
