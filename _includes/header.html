@@ -1,21 +1,23 @@
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="{{ '/' | relative_url }}">
-      <span class="brand-mark">GA</span>
-      <span class="brand-text">{{ site.data.profile.name }}</span>
-    </a>
+<aside class="rail">
+  <div class="rail-inner">
+    <p class="rail-role">{{ site.data.profile.role }}</p>
+    <a class="rail-name" href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
+    <p class="rail-lede">{{ site.data.profile.lede }}</p>
 
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </label>
-
-    <nav class="site-nav" aria-label="Primary">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#work" class="nav-link">Work</a>
-      <a href="#research" class="nav-link">Research</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#stats" class="nav-link">GitHub</a>
+    <nav class="rail-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#mentoring">Mentoring</a>
+      <a href="#work">Selected work</a>
+      <a href="#research">Research</a>
     </nav>
+
+    <ul class="rail-links">
+      {% for link in site.data.profile.links %}
+        <li>
+          <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
-</header>
+</aside>

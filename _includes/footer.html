@@ -1,27 +1,34 @@
 <footer class="site-footer">
-  <div class="wrap footer-inner">
-    <div class="footer-col">
-      <span class="brand-mark small">GA</span>
-      <p>{{ site.title }} &mdash; {{ site.tagline }}</p>
-    </div>
-    <div class="footer-col">
-      <p class="footer-heading">Elsewhere</p>
-      {% for link in site.data.profile.links %}
-        <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
-      {% endfor %}
-    </div>
-    <div class="footer-col">
-      <p class="footer-heading">This site</p>
-      <p class="muted">
-        Static Jekyll build, served from the
-        <a href="https://github.com/gavinjalberghini/Pantry" target="_blank" rel="noopener">Pantry</a>
-        homelab on Raspberry Pi workers behind a Cloudflare Tunnel.
-        Source is
-        <a href="https://github.com/gavinjalberghini/alberghini" target="_blank" rel="noopener">gavinjalberghini/alberghini</a>.
-      </p>
+  <div class="gh-quiet">
+    <p class="footer-heading">GitHub</p>
+    <p class="muted">
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">@{{ site.github_username }}</a>
+      — widgets hide themselves if GitHub is having a day.
+    </p>
+    <div class="stats-grid">
+      <img
+        class="stats-card"
+        src="https://github-readme-stats.vercel.app/api?username={{ site.github_username }}&amp;show_icons=true&amp;hide_border=true&amp;bg_color=12151c&amp;title_color=5eead4&amp;text_color=e7eaf0&amp;icon_color=5eead4&amp;ring_color=5eead4"
+        alt=""
+        width="495"
+        height="195"
+        loading="lazy"
+        onerror="this.hidden=true">
+      <img
+        class="stats-card"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username={{ site.github_username }}&amp;layout=compact&amp;hide_border=true&amp;bg_color=12151c&amp;title_color=5eead4&amp;text_color=e7eaf0"
+        alt=""
+        width="300"
+        height="195"
+        loading="lazy"
+        onerror="this.hidden=true">
     </div>
   </div>
-  <div class="wrap footer-bottom">
+  <p class="footer-bottom">
     <span>&copy; {{ site.time | date: '%Y' }} {{ site.data.profile.name }}.</span>
-  </div>
+    <span class="muted">
+      Source:
+      <a href="https://github.com/gavinjalberghini/alberghini" target="_blank" rel="noopener">gavinjalberghini/alberghini</a>.
+    </span>
+  </p>
 </footer>

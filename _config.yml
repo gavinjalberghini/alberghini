@@ -1,10 +1,9 @@
 # Site settings
 title: Gavin Alberghini
-tagline: Platform Engineer
+tagline: MLOps & DevSecOps Team Lead
 description: >-
-  Platform Engineer working across DevSecOps and MLOps — designing,
-  building, and operating cloud platform capabilities for software
-  engineers and data scientists.
+  MLOps and DevSecOps team lead and CRE product owner at MITRE.
+  Cloud platforms for public missions.
 author: Gavin Alberghini
 
 # Served at https://alberghini.io/me — the tunnel forwards that prefix
@@ -32,3 +31,4 @@ exclude:
   - Taskfile.yml
   - Dockerfile
   - .dockerignore
+  - nginx-default.conf
