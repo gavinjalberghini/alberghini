@@ -68,8 +68,11 @@
   --muted: #8b93a7;
   --brand: #5eead4;
   --brand-dim: #2dd4bf;
+  --warn: #fb923c;
   --radius: 14px;
   --maxw: 1040px;
+  --spot-x: 50%;
+  --spot-y: 30%;
   --font: "Inter", system-ui, -apple-system, segoe ui, roboto, sans-serif;
   --display: "Space Grotesk", var(--font);
   --mono: ui-monospace, "Cascadia Code", "SF Mono", menlo, consolas, monospace;
@@ -93,6 +96,20 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+
+body.has-spot::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    520px circle at var(--spot-x) var(--spot-y),
+    rgba(94, 234, 212, 0.07),
+    transparent 55%
+  );
+}
+
 
 a {
   color: var(--brand);
@@ -133,6 +150,8 @@ p {
 }
 
 .page {
+  position: relative;
+  z-index: 1;
   width: min(1120px, calc(100% - 2.4rem));
   margin-inline: auto;
   display: grid;
@@ -194,8 +213,9 @@ p {
   text-transform: uppercase;
 }
 
-.rail-nav a:hover {
-  color: var(--text);
+.rail-nav a:hover,
+.rail-nav a.is-active {
+  color: var(--brand);
   text-decoration: none;
 }
 
@@ -252,25 +272,68 @@ p {
   list-style: none;
 }
 
-.job + .job {
-  margin-top: 2.2rem;
-  padding-top: 2.2rem;
+.jobs > li + li {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--border);
 }
 
-.jobs.compact .job + .job {
-  margin-top: 1.4rem;
-  padding-top: 1.4rem;
+.job > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.job > summary::-webkit-details-marker {
+  display: none;
+}
+
+.job-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.02rem;
 }
 
 .job-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 1rem;
-  margin: 0 0 0.7rem;
+  margin: 0.15rem 0 0;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.78rem;
+}
+
+.job[open] .job-title {
+  color: var(--brand);
+}
+
+.job .prose {
+  margin-top: 0.7rem;
+}
+
+.edu,
+.mentor-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.edu li,
+.mentor-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.edu li:first-child,
+.mentor-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .job-bullets {
@@ -455,5 +518,111 @@ p {
 
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.stack-board {
+  margin-top: 1.6rem;
+}
+
+.stack-prompt,
+.drift-help {
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.stack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.stack-node {
+  appearance: none;
+  cursor: pointer;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.stack-node[data-kind="custom"] {
+  border-style: dashed;
+}
+
+.stack-node:hover,
+.stack-node[aria-pressed="true"] {
+  border-color: var(--brand-dim);
+  color: var(--brand);
+}
+
+.stack-blurb {
+  margin: 0.85rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.research-card {
+  margin-bottom: 1.2rem;
+}
+
+.drift {
+  margin-top: 0.4rem;
+}
+
+.drift-label {
+  margin: 0 0 0.35rem;
+}
+
+.drift-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  cursor: crosshair;
+}
+
+.drift-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.8rem;
+  margin-top: 0.7rem;
+}
+
+.drift-actions button {
+  appearance: none;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.drift-actions button:hover {
+  border-color: var(--brand-dim);
+  color: var(--brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body.has-spot::before {
+    display: none;
   }
 }

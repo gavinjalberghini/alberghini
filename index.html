@@ -11,52 +11,69 @@ permalink: /
   {% for para in p.about %}
     <p class="prose">{{ para }}</p>
   {% endfor %}
+
+  <div class="stack-board" data-stack>
+    <p class="stack-prompt">{{ p.platform.intro }}</p>
+    <div class="stack-grid" role="list">
+      {% for item in p.platform.items %}
+        <button
+          type="button"
+          class="stack-node"
+          role="listitem"
+          data-kind="{{ item.kind }}"
+          data-blurb="{{ item.blurb | escape }}"
+          aria-pressed="false">
+          {{ item.name }}
+        </button>
+      {% endfor %}
+    </div>
+    <p class="stack-blurb" data-stack-blurb hidden></p>
+  </div>
 </section>
 
 <section id="experience" class="section">
   <h2><span class="section-num">02</span> Experience</h2>
   <ol class="jobs">
     {% for job in p.experience %}
-      <li class="job">
-        <div class="job-head">
-          <h3>{{ job.title }} · {{ job.org }}</h3>
-          <p class="job-meta">
-            <span>{{ job.dates }}</span>
-            {% if job.location %}<span>{{ job.location }}</span>{% endif %}
-          </p>
-        </div>
-        <p class="prose">{{ job.summary }}</p>
-        {% if job.bullets and job.bullets.size > 0 %}
-          <ul class="job-bullets">
-            {% for bullet in job.bullets %}
-              <li>{{ bullet }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-        {% if job.stack %}
-          <ul class="chips">
-            {% for item in job.stack %}
-              <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+      <li>
+        <details class="job"{% if forloop.first %} open{% endif %}>
+          <summary>
+            <span class="job-title">{{ job.title }} · {{ job.org }}</span>
+            <span class="job-meta">
+              <span>{{ job.dates }}</span>
+              {% if job.location %}<span>{{ job.location }}</span>{% endif %}
+            </span>
+          </summary>
+          <p class="prose">{{ job.summary }}</p>
+          {% if job.bullets and job.bullets.size > 0 %}
+            <ul class="job-bullets">
+              {% for bullet in job.bullets %}
+                <li>{{ bullet }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if job.stack %}
+            <ul class="chips">
+              {% for item in job.stack %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </details>
       </li>
     {% endfor %}
   </ol>
 
   <h3 class="subhead">Education</h3>
-  <ol class="jobs compact">
+  <ol class="edu">
     {% for ed in p.education %}
-      <li class="job">
-        <div class="job-head">
-          <h3>{{ ed.degree }} · {{ ed.school }}</h3>
-          <p class="job-meta">
-            <span>{{ ed.dates }}</span>
-            {% if ed.concentration %}<span>{{ ed.concentration }}</span>{% endif %}
-            {% if ed.honors %}<span>{{ ed.honors }}</span>{% endif %}
-          </p>
-        </div>
-        <p class="prose">{{ ed.summary }}</p>
+      <li>
+        <span class="job-title">{{ ed.degree }}</span>
+        <span class="job-meta">
+          <span>{{ ed.dates }}</span>
+          <span>{{ ed.concentration }}</span>
+          <span>{{ ed.honors }}</span>
+        </span>
       </li>
     {% endfor %}
   </ol>
@@ -65,32 +82,24 @@ permalink: /
 <section id="mentoring" class="section">
   <h2><span class="section-num">03</span> Mentoring</h2>
   <p class="prose">{{ p.mentoring.intro }}</p>
-  <ol class="jobs">
+  <ul class="mentor-list">
     {% for role in p.mentoring.roles %}
-      <li class="job">
-        <div class="job-head">
-          <h3>{{ role.title }} · {{ role.org }}</h3>
-          <p class="job-meta"><span>{{ role.dates }}</span></p>
-        </div>
-        <p class="prose">{{ role.summary }}</p>
-        {% if role.events %}
-          <ul class="job-bullets">
-            {% for event in role.events %}
-              <li>{{ event }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+      <li>
+        <span class="job-title">{{ role.title }}</span>
+        <span class="job-meta">
+          <span>{{ role.org }}</span>
+          <span>{{ role.dates }}</span>
+          {% if role.events %}
+            <span>{{ role.events | join: " · " }}</span>
+          {% endif %}
+        </span>
       </li>
     {% endfor %}
-  </ol>
+  </ul>
 </section>
 
 <section id="work" class="section">
   <h2><span class="section-num">04</span> Selected work</h2>
-  <p class="section-intro">
-    Public things only — live sites and the paper. School repos are in the
-    archive at the bottom.
-  </p>
   <div class="card-grid">
     {% for proj in p.projects %}
       <article class="card">
@@ -99,7 +108,7 @@ permalink: /
         <p>{{ proj.summary }}</p>
         <p class="card-links">
           <a href="{{ proj.url }}" target="_blank" rel="noopener">Open</a>
-          {% if proj.repo %}
+          {% if proj.repo and proj.repo != proj.url %}
             <a href="{{ proj.repo }}" target="_blank" rel="noopener">GitHub</a>
           {% endif %}
         </p>
@@ -123,29 +132,33 @@ permalink: /
 
 <section id="research" class="section">
   <h2><span class="section-num">05</span> Research</h2>
-  <div class="card-grid">
-    {% for paper in p.research %}
-      <article class="card">
-        <p class="card-kicker">{{ paper.kind }}</p>
-        <h3>{{ paper.title }}</h3>
-        <p class="card-meta">{{ paper.authors }}</p>
-        <p class="card-meta">{{ paper.venue }}</p>
-        <p>{{ paper.summary }}</p>
-        <p class="card-links">
-          {% if paper.doi %}
-            <a href="{{ paper.doi }}" target="_blank" rel="noopener">DOI</a>
-          {% endif %}
-          {% if paper.researchgate %}
-            <a href="{{ paper.researchgate }}" target="_blank" rel="noopener">ResearchGate</a>
-          {% endif %}
-          {% if paper.url %}
-            <a href="{{ paper.url }}" target="_blank" rel="noopener">Thesis</a>
-          {% endif %}
-          {% if paper.code %}
-            <a href="{{ paper.code }}" target="_blank" rel="noopener">Code</a>
-          {% endif %}
-        </p>
-      </article>
-    {% endfor %}
+  {% for paper in p.research %}
+    <article class="card research-card">
+      <p class="card-kicker">{{ paper.kind }}</p>
+      <h3>{{ paper.title }}</h3>
+      <p class="card-meta">{{ paper.authors }} · {{ paper.venue }}</p>
+      <p>{{ paper.summary }}</p>
+      <p class="card-links">
+        <a href="{{ paper.doi }}" target="_blank" rel="noopener">DOI</a>
+        <a href="{{ paper.researchgate }}" target="_blank" rel="noopener">ResearchGate</a>
+        <a href="{{ paper.code }}" target="_blank" rel="noopener">Code</a>
+      </p>
+    </article>
+  {% endfor %}
+
+  <div class="drift" data-drift>
+    <div class="drift-head">
+      <p class="subhead drift-label">Concept drift</p>
+      <p class="muted drift-help">
+        Click to drop a point. Drift remaps the labels — the thing the paper
+        is about. k=3.
+      </p>
+    </div>
+    <canvas class="drift-canvas" width="640" height="360" aria-label="Interactive kNN concept-drift sketch"></canvas>
+    <div class="drift-actions">
+      <button type="button" data-drift-go>Drift</button>
+      <button type="button" data-drift-reset>Reset</button>
+      <span class="muted" data-drift-status>Ready</span>
+    </div>
   </div>
 </section>

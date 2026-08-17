@@ -3,35 +3,18 @@ role: MLOps & DevSecOps Team Lead
 location: Virginia, USA
 lede: >-
   MLOps and DevSecOps team lead and Collaborative Research Enclave
-  (CRE) product owner. I support software engineers and data analysts
-  across public missions by building and operating cloud platforms
-  that streamline capability at MITRE.
+  (CRE) product owner. Cloud platforms for software engineers and
+  data analysts on public missions at MITRE.
 
 about:
   - >-
-    I'm Gavin. Since June 2025 I have been a group leader at MITRE —
-    MLOps and DevSecOps team lead, and CRE product owner. I manage
-    about six engineers who
-    run an AWS environment centered on EKS, with a seven-figure
-    annual budget, for data science at scale on petabytes of FAA data.
+    Group leader at MITRE since June 2025. I run a six-engineer
+    DevSecOps group and own CRE — an AWS / EKS environment with a
+    seven-figure budget, doing data science on petabytes of FAA data.
   - >-
-    We run that estate with open-source and custom software.
-    Terraform, Karpenter, Kyverno, ACK, the Grafana LGTM stack,
-    Actions Runner Controller, Harbor, Calico, the AWS load balancer
-    controller, cert-manager, the NVIDIA GPU plugin — plus cataloging
-    and audit tools, PR and automation management, IaaS workflows,
-    and the other automation we write ourselves. I champion
-    infrastructure as code, idempotent operations, CMMC, data
-    engineering, and machine learning.
-  - >-
-    Before MITRE I studied computer science at Virginia Commonwealth
-    University (B.S. 2020, summa cum laude; M.S. 2021) and published
-    on continual learning for multi-label drifting data streams.
-  - >-
-    I have been around FIRST Robotics since 2012 — alumnus, programming
-    mentor, and event volunteer. Control systems at district events is
-    the part I keep showing up for. FRC-SS is the public playbook from
-    that work.
+    FIRST alumnus since 2012. I still mentor high-school programmers
+    and work control systems at district events. VCU B.S. 2020
+    (summa) and M.S. 2021; the paper below is the thesis, published.
 
 links:
   - label: GitHub
@@ -41,84 +24,84 @@ links:
   - label: Paper
     url: https://doi.org/10.1016/j.neucom.2022.01.075
 
+platform:
+  intro: Click a box. OSS on the left of the stack; custom on the last row.
+  items:
+    - name: Terraform
+      kind: oss
+      blurb: Idempotent AWS and cluster config. The source of truth.
+    - name: Karpenter
+      kind: oss
+      blurb: Node provisioning for EKS — GPUs and Spot when the jobs show up.
+    - name: Kyverno
+      kind: oss
+      blurb: Policy as code on the cluster. Guardrails, not tickets.
+    - name: ACK
+      kind: oss
+      blurb: AWS controllers for Kubernetes — cloud resources as CRs.
+    - name: Grafana LGTM
+      kind: oss
+      blurb: Grafana, Loki, Tempo, Mimir — metrics, logs, traces, one pane.
+    - name: GHA ARC
+      kind: oss
+      blurb: Actions Runner Controller. CI that lives next to the workloads.
+    - name: Harbor
+      kind: oss
+      blurb: Internal registry. Images we trust, scanned before they run.
+    - name: Calico
+      kind: oss
+      blurb: Cluster networking and network policy.
+    - name: AWS LBC
+      kind: oss
+      blurb: AWS Load Balancer Controller. Ingress that maps to ALB/NLB.
+    - name: cert-manager
+      kind: oss
+      blurb: Certificates as cluster objects. No one copies PEMs by hand.
+    - name: NVIDIA GPU
+      kind: oss
+      blurb: Device plugin so Jupyter and Spark can actually see the GPUs.
+    - name: Catalog & audit
+      kind: custom
+      blurb: Custom cataloging and audit — who ran what, on which data.
+    - name: PR automation
+      kind: custom
+      blurb: Custom PR and automation management. The path to prod is a PR.
+    - name: IaaS workflows
+      kind: custom
+      blurb: Custom IaaS workflows and the other glue we write ourselves.
+
 experience:
   - org: MITRE
     title: Group Leader · CRE Product Owner
     dates: Jun 2025 — Present
     location: Hampton, VA
     summary: >-
-      People manager for a DevSecOps group of about six engineers,
-      and CRE product owner.
-      The group operates an AWS / EKS environment with an annual
-      budget over $1M, for data science at scale across petabytes
-      of FAA data — supporting engineers and analysts on public
-      missions.
+      Six engineers, AWS / EKS, budget over $1M, petabytes of FAA data.
     bullets:
-      - >-
-        Hire, coach, and set the work for the group that keeps the
-        platform up — cost, reliability, and access for the science
-        teams on it.
-      - >-
-        Own the operating budget and the cloud posture for that
-        environment.
-      - >-
-        Run Kubernetes and AWS through open-source and custom
-        software. Push IaC, idempotent operations, CMMC, data
-        engineering, and machine learning as the default, not a
-        side project.
+      - Hire, coach, and set the work — cost, reliability, access.
+      - IaC, idempotent ops, CMMC, data engineering, and ML as the default.
     stack:
       - AWS
       - EKS
       - Terraform
       - CMMC
       - MLOps
-      - DevSecOps
 
   - org: MITRE
     title: Lead DevSecOps Engineer
     dates: Mar 2023 — Present
     location: Hampton, VA
     summary: >-
-      Platform architecture for CRE on AWS / EKS — open-source and
-      custom software. IaC,
-      idempotent operations, CMMC, data engineering, and MLOps
-      for research teams on public missions. Outcomes I can share:
+      CRE platform architecture on EKS. Outcomes I can share:
     bullets:
-      - >-
-        Stood up Spark Operator, Dagster, and MLflow on the research
-        platform so teams could catalog data and experiments and get
-        ephemeral Spark without waiting on a ticket — 100+ workflow
-        instances for tenant projects.
-      - >-
-        Prototyped end-to-end train / retrain pipelines on petabyte-scale
-        data in AWS. IaC cut those pipeline definitions from thousands
-        of lines to hundreds.
-      - >-
-        Opened GPU on the same platform for Spark and JupyterHub:
-        200+ developer-initiated sessions and 800+ GPU hours a year.
-      - >-
-        Built the monitoring and alerting stack (cost, downtime,
-        compute, security). Downtime dropped about 90% after adoption.
-      - >-
-        Custom layer on top of the OSS stack: cataloging and audit
-        tools, PR and automation management, IaaS workflows, and
-        general platform automation.
+      - Spark Operator, Dagster, MLflow — 100+ workflow instances.
+      - Train/retrain pipelines on petabyte-scale data; IaC cut the code ~10×.
+      - GPU for Spark and JupyterHub: 200+ sessions, 800+ GPU hours / year.
+      - Monitoring stack; downtime down about 90%.
     stack:
-      - Terraform
+      - EKS
       - Karpenter
       - Kyverno
-      - ACK
-      - Grafana
-      - Loki
-      - Tempo
-      - Mimir
-      - GHA ARC
-      - Harbor
-      - Calico
-      - AWS LBC
-      - cert-manager
-      - NVIDIA GPU plugin
-      - Spark Operator
       - Dagster
       - MLflow
 
@@ -126,47 +109,25 @@ experience:
     title: Cloud DevSecOps Engineer
     dates: Jun 2021 — Mar 2023
     location: Hampton, VA
-    summary: >-
-      First role on the same family of research platforms — access,
-      compliance, cost, and the docs that let people actually use them.
+    summary: Access, compliance, cost, and the docs that made the platform usable.
     bullets:
-      - >-
-        InSpec automation against CIS and NIST benchmarks, with alerts
-        when a node drifted.
-      - >-
-        AWS IAM for developers, operators, and tenant teams.
-      - >-
-        Nightly stop, Spot, and cost-attribution tags — operating cost
-        down to about a third of where it started.
-      - >-
-        Service catalog, docs site, and video walkthroughs so a new
-        user could be productive in minutes, not a week.
+      - InSpec against CIS and NIST.
+      - Nightly stop, Spot, tags — operating cost to about a third.
     stack:
       - AWS
       - Terraform
-      - Ansible
-      - Chef InSpec
+      - InSpec
       - IAM
-      - Helm
-      - Packer
 
   - org: Virginia Commonwealth University
     title: Lecture, lab & research assistant
     dates: 2019 — 2021
     location: Richmond, VA
-    summary: >-
-      Teaching support and research in the Department of Computer
-      Science while finishing the B.S. and M.S. — the thesis work
-      below grew out of that lab.
-    bullets:
-      - >-
-        Assisted lecture and lab sections; advised undergraduate
-        research that became the AESAKNNS ensemble.
+    summary: Teaching support; the AESAKNNS paper started in that lab.
     stack:
       - Java
       - Python
       - MOA
-      - RapidMiner
 
 education:
   - school: Virginia Commonwealth University
@@ -174,141 +135,95 @@ education:
     concentration: Data Science
     dates: 2020 — 2021
     honors: GPA 4.0
-    summary: >-
-      Thesis on continual learning for multi-label drifting data
-      streams (homogeneous ensemble of self-adjusting nearest
-      neighbors), advised by Alberto Cano. Extended into the
-      AESAKNNS paper in Neurocomputing (April 2022).
-
   - school: Virginia Commonwealth University
     degree: B.S. Computer Science
     concentration: Data Science
     dates: 2017 — 2020
     honors: Summa cum laude · GPA 3.966
-    summary: >-
-      Dean's list every term. Senior project and coursework in
-      data science, AI, and software engineering.
 
 mentoring:
-  intro: >-
-    FIRST alumnus since 2012. I still mentor high-school programmers
-    and work event control systems in Hampton Roads.
+  intro: FIRST since 2012 — alumnus, mentor, event volunteer.
   roles:
     - title: Control System Advisor
-      org: FIRST Robotics Competition
+      org: FRC
       dates: 2023 — present
-      summary: >-
-        District event volunteer — help teams debug radios, roboRIO,
-        and the control system when the pit is loud and the clock is
-        not.
       events:
-        - CHS District Portsmouth VA Event (2023, 2024)
-        - FCH District Chesapeake VA Event (2026)
+        - Portsmouth 2023, 2024
+        - Chesapeake 2026
     - title: Robot Inspector
-      org: FIRST Robotics Competition
+      org: FRC
       dates: 2018
-      summary: >-
-        First official volunteer role, CHS District Southwest Virginia
-        Event.
-    - title: Robot programming mentor
-      org: Collegiate School & Hickory High School FRC
+      events:
+        - Southwest Virginia
+    - title: Programming mentor
+      org: Collegiate School & Hickory HS
       dates: Ongoing
-      summary: >-
-        Season mentoring for student programmers — robot code, control
-        systems, and how a team actually ships on a deadline.
     - title: Industry mentor
       org: Hampton Roads Governor's School
       dates: May 2021 — present
-      summary: >-
-        Senior capstone advisor for machine-learning projects.
-    - title: Other
+    - title: Mentor / volunteer
       org: Grassfield STEM, ODU, FRC Portsmouth
       dates: Ongoing
-      summary: >-
-        Unity mentor at Grassfield High School STEM Academy; mentor
-        for an Old Dominion University senior capstone; FRC event
-        volunteer in Portsmouth.
 
 research:
-  - kind: Journal article
+  - kind: Neurocomputing, April 2022
     title: >-
       Adaptive ensemble of self-adjusting nearest neighbor subspaces for
       multi-label drifting data streams
-    venue: Neurocomputing, vol. 481, pp. 228–248, 7 April 2022
+    venue: vol. 481, pp. 228–248
     authors: Gavin Alberghini, Sylvio Barbon Junior, Alberto Cano
     doi: https://doi.org/10.1016/j.neucom.2022.01.075
     researchgate: https://www.researchgate.net/publication/358109395_Adaptive_Ensemble_of_Self-Adjusting_Nearest_Neighbor_Subspaces_for_Multi-Label_Drifting_Data_Streams
     code: https://github.com/canoalberto/AESAKNNS
     summary: >-
-      AESAKNNS is an ensemble of self-adjusting kNN classifiers for
-      multi-label streams that drift. Each base learner trains on its
-      own feature subspace and an online-bagging sample; ADWIN watches
-      for concept drift and a background ensemble trains on new
-      subspaces so the accurate classifiers can replace the current
-      set. Evaluated against 30 classifiers on 30 datasets and 12
-      metrics.
-
-  - kind: Master's thesis
-    title: >-
-      Continual learning for multi-label drifting data streams using
-      homogeneous ensemble of self-adjusting nearest neighbors
-    venue: Virginia Commonwealth University, May 2021 · Defense 6 May 2021
-    authors: Gavin Alberghini
-    url: https://scholarscompass.vcu.edu/cgi/viewcontent.cgi?article=7725&context=etd
-    summary: >-
-      The thesis the Neurocomputing paper grew out of — HESAkNN,
-      a homogeneous ensemble of MLSAkNN base classifiers for continual
-      multi-label learning under concept drift. Advised by Alberto Cano.
+      AESAKNNS — ensemble of self-adjusting kNNs for multi-label streams
+      that drift. Subspaces, online bagging, ADWIN, a background ensemble
+      that replaces the losers. 30 classifiers, 30 datasets, 12 metrics.
 
 projects:
   - name: FRC-SS
     url: https://alberghini.io/frc-ss
     repo: https://github.com/gavinjalberghini/FRC-SS
     kind: Playbook
-    summary: >-
-      An opinionated playbook for running an FRC robotics team —
-      control systems, programming, and how the season actually works.
-      Hosted here.
+    summary: How to run an FRC team — control systems, code, the season.
 
-  - name: This site
-    url: https://alberghini.io/me
-    repo: https://github.com/gavinjalberghini/alberghini
-    kind: Site
+  - name: ML Bootcamp
+    url: https://github.com/gavinjalberghini/ml-bootcamp
+    repo: https://github.com/gavinjalberghini/ml-bootcamp
+    kind: Mentorship
     summary: >-
-      The page you are on. Jekyll, unprivileged nginx, served under
-      /me from the same cluster as FRC-SS.
+      Template repo for a mentorship sequence in applied ML — kNN,
+      ensembles, streams, drift, optional Jetson. Issues travel with
+      the template.
 
   - name: AESAKNNS
     url: https://doi.org/10.1016/j.neucom.2022.01.075
     repo: https://github.com/canoalberto/AESAKNNS
     kind: Research
-    summary: >-
-      Reference implementation for the Neurocomputing paper — ensemble
-      of self-adjusting nearest-neighbor subspaces for drifting
-      multi-label streams.
+    summary: Reference code for the Neurocomputing paper.
 
 archive:
   - name: Hack-Heist
     url: https://github.com/gavinjalberghini/Hack-Heist
     lang: Java
-    summary: CMSC 355 team project — an Android game that teaches Java.
+    summary: Android game that teaches Java.
   - name: NNSB-CCIPT
     url: https://github.com/gavinjalberghini/NNSB-CCIPT
     lang: Python
-    summary: Climate-impact tool for Newport News / Hampton Roads.
+    summary: Climate-impact tool for Hampton Roads.
   - name: Operating-System-Simulation
     url: https://github.com/gavinjalberghini/Operating-System-Simulation
     lang: Java
-    summary: OS simulator used as a test bed for coverage tools.
+    summary: OS simulator for coverage-tool experiments.
   - name: Protein-Interaction-Classifier
     url: https://github.com/gavinjalberghini/Protein-Interaction-Classifier
     lang: Python
-    summary: Classifiers for protein interaction with DNA and RNA.
+    summary: Protein–DNA/RNA interaction classifiers.
   - name: Shifting-Reality-VR
     url: https://github.com/gavinjalberghini/Shifting-Reality-VR
     lang: C#
-    summary: Unity exploration for the HTC Vive.
+    summary: Unity for the HTC Vive.
   - name: Unity-Learning-Objectives
     url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
     lang: C#
-    summary: Unity workshops that fold hardware into world-building.
+    summary: Unity workshops for hardware-in-the-loop world-building.
