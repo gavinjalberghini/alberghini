@@ -52,6 +52,17 @@ permalink: /
               {% endfor %}
             </ul>
           {% endif %}
+          {% assign outcomes = job.outcomes | compact %}
+          {% if outcomes.size > 0 %}
+            <p class="job-outcomes-label">Outcomes</p>
+            <ul class="job-bullets">
+              {% for item in outcomes %}
+                {% if item != "" %}
+                  <li>{{ item }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
           {% if job.stack %}
             <ul class="chips">
               {% for item in job.stack %}

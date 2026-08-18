@@ -155,7 +155,7 @@ p {
   height: 8.5rem;
   margin: 0 0 1.3rem;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center top;
   border-radius: 50%;
   border: 1px solid var(--border);
 }
@@ -340,6 +340,15 @@ p {
 .hobby-list li:nth-child(-n + 2) {
   border-top: 0;
   padding-top: 0;
+}
+
+.job-outcomes-label {
+  margin: 0.85rem 0 0.35rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .job-bullets {

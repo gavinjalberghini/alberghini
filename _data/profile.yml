@@ -2,20 +2,20 @@ name: Gavin Alberghini
 role: MLOps & DevSecOps Team Lead
 location: Virginia, USA
 lede: >-
-  MLOps and DevSecOps team lead and Collaborative Research Enclave
-  (CRE) product owner. Cloud platforms for software engineers and
-  data analysts on public missions at MITRE.
+  DevSecOps Lead Engineer supporting software engineering and 
+  data analysis across public missions at MITRE through ownership 
+  of cutting edge cloud platforms that streamline capabilities 
+  and accelerate time to value.
 
 about:
   - >-
-    Group leader at MITRE since June 2025. I run a six-engineer
-    DevSecOps group and own CRE — an AWS / EKS environment with a
-    seven-figure budget, doing data science on petabytes of FAA data.
+    I run a lean DevSecOps team supporting AWS govcloud collaborative
+    environments at scale. These     environments operate on a seven-figure 
+    budget and support data science activities across petabytes of information.
   - >-
-    I mentor outside the day job: Unity at Grassfield STEM, ML
-    capstones at the Governor's School, and an ODU senior project —
-    plus FIRST since 2012. VCU B.S. 2020 (summa) and M.S. 2021;
-    the paper below is the thesis, published.
+    Outside of work I am an active member of the STEM community. Mentorship 
+    and giving back to the next generation are hallmarks of my upbringing. I
+    am a dedicated Teacher, FIRST Robotics Mentor, and Capstone Advisor. 
 
 links:
   - label: GitHub
@@ -26,79 +26,71 @@ links:
     url: https://doi.org/10.1016/j.neucom.2022.01.075
 
 platform:
-  intro: Click a box. OSS on the left of the stack; custom on the last row.
+  intro: Click a technology to see more.
   items:
     - name: Terraform
       kind: oss
-      blurb: Idempotent AWS and cluster config. The source of truth.
+      blurb: Idempotent AWS and K8s configurations as code.
     - name: Karpenter
       kind: oss
-      blurb: Node provisioning for EKS — GPUs and Spot when the jobs show up.
+      blurb: Compute provisioning and orchestration for EKS.
     - name: Kyverno
       kind: oss
-      blurb: Policy as code on the cluster. Guardrails, not tickets.
+      blurb: Policy as code for the clustered environments.
     - name: ACK
       kind: oss
-      blurb: AWS controllers for Kubernetes — cloud resources as CRs.
+      blurb: AWS controllers for Kubernetes. Cloud resources as CRs.
     - name: Grafana LGTM
       kind: oss
-      blurb: Grafana, Loki, Tempo, Mimir — metrics, logs, traces, one pane.
+      blurb: Full observability stack for metrics, logs, and traces in one pane.
     - name: GHA ARC
       kind: oss
-      blurb: Actions Runner Controller. CI that lives next to the workloads.
+      blurb: Actions Runner Controller. CI that lives next to the codebase.
     - name: Harbor
       kind: oss
-      blurb: Internal registry. Images we trust, scanned before they run.
+      blurb: Internal registry for container images.
     - name: Calico
       kind: oss
-      blurb: Cluster networking and network policy.
+      blurb: Cluster networking and network policies.
     - name: AWS LBC
       kind: oss
-      blurb: AWS Load Balancer Controller. Ingress that maps to ALB/NLB.
+      blurb: AWS Load Balancer Controller for ingress traffic.
     - name: cert-manager
       kind: oss
-      blurb: Certificates as cluster objects. No one copies PEMs by hand.
+      blurb: Certificates as cluster objects.
     - name: NVIDIA GPU
       kind: oss
-      blurb: Device plugin so Jupyter and Spark can actually see the GPUs.
-    - name: Catalog & audit
-      kind: custom
-      blurb: Custom cataloging and audit — who ran what, on which data.
-    - name: PR automation
-      kind: custom
-      blurb: Custom PR and automation management. The path to prod is a PR.
-    - name: IaaS workflows
-      kind: custom
-      blurb: Custom IaaS workflows and the other glue we write ourselves.
+      blurb: Device plugin for GPU visibility in Jupyter and Spark.
 
 experience:
   - org: MITRE
-    title: Group Leader · CRE Product Owner
+    title: CRE Product Owner (Group Leader)
     dates: Jun 2025 — Present
     location: Williamsburg, VA
     summary: >-
-      Six engineers, AWS / EKS, budget over $1M, petabytes of FAA data.
+      Lead the strategy, architecture, and execution of the CRE platform.
     bullets:
-      - Hire, coach, and set the work — cost, reliability, access.
-      - IaC, idempotent ops, CMMC, data engineering, and ML as the default.
+      - Hire and mentor talent to support the platform and the mission.
+      - Drive cost, reliability, and access that enables rapid science and engineering.
+      - Bring security to the forefront through rigorous compliance programs and operational best practices.
+    outcomes:
+      - CMMC Level 2 compliance for a 300+ developer environment. 
     stack:
       - AWS
-      - EKS
+      - Kubernetes
       - Terraform
-      - CMMC
-      - MLOps
-
   - org: MITRE
-    title: Lead DevSecOps Engineer
-    dates: Mar 2023 — Present
+    title: Senior DevSecOps Engineer
+    dates: Mar 2023 — Jun 2025
     location: Richmond, then Williamsburg, VA
     summary: >-
-      CRE platform architecture on EKS. Outcomes I can share:
+      Technical lead for CRE implementation efforts.
     bullets:
-      - Spark Operator, Dagster, MLflow — 100+ workflow instances.
-      - Train/retrain pipelines on petabyte-scale data; IaC cut the code ~10×.
-      - GPU for Spark and JupyterHub: 200+ sessions, 800+ GPU hours / year.
-      - Monitoring stack; downtime down about 90%.
+      - Cloud first data ingest via Spark Operator and Dagster.
+      - Monitoring stack for observability and uptime.
+    outcomes:
+      - GPU for Spark and JupyterHub supporting 200+ sessions, 800+ GPU hours / year.
+      - Incident durations reduced by 90% through observability and alerting.
     stack:
       - EKS
       - Karpenter
@@ -110,7 +102,7 @@ experience:
     title: Cloud DevSecOps Engineer
     dates: Jun 2021 — Mar 2023
     location: Hampton, VA
-    summary: Access, compliance, cost, and the docs that made the platform usable.
+    summary: Work across MITRE internal cloud environments to standardize access, compliance, and cost.
     bullets:
       - InSpec against CIS and NIST.
       - Nightly stop, Spot, tags — operating cost to about a third.
