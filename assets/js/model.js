@@ -2,8 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "./vendor/OrbitControls.js";
 import { STLLoader } from "./vendor/STLLoader.js";
 
-function modelViewer() {
-  var root = document.querySelector("[data-model]");
+function modelViewer(root) {
   if (!root) return;
 
   var stage = root.querySelector("[data-model-stage]");
@@ -119,4 +118,4 @@ function modelViewer() {
   });
 }
 
-modelViewer();
+document.querySelectorAll("[data-model]").forEach(modelViewer);

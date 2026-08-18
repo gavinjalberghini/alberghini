@@ -1,6 +1,6 @@
 (function () {
-  var root = document.querySelector("[data-model]");
-  if (!root) return;
+  var roots = document.querySelectorAll("[data-model]");
+  if (!roots.length) return;
 
   function load() {
     import("./model.js");
@@ -19,5 +19,5 @@
     },
     { rootMargin: "200px 0px" }
   );
-  io.observe(root);
+  io.observe(roots[0]);
 })();

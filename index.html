@@ -188,21 +188,39 @@ permalink: /
     {% endfor %}
   </ul>
 
-  <div
-    class="model"
-    data-model
-    data-src="{{ '/assets/models/smashing-kup.stl' | relative_url }}">
-    <div class="drift-head">
-      <p class="subhead drift-label">Smashing Kup</p>
-      <p class="muted drift-help">
-        A custom motorcycle-bar clamp that quick-mounts to a Picatinny
-        rail. Drag to orbit, scroll to zoom.
-      </p>
+  <div class="model-grid">
+    <div
+      class="model"
+      data-model
+      data-src="{{ '/assets/models/picatinny-clamp.stl' | relative_url }}">
+      <div class="drift-head">
+        <p class="subhead drift-label">Picatinny Clamp</p>
+        <p class="muted drift-help">
+          Motorcycle-bar clamp that quick-mounts to a Picatinny rail.
+          Drag to orbit, scroll to zoom.
+        </p>
+      </div>
+      <div class="model-stage" data-model-stage></div>
+      <div class="drift-actions">
+        <button type="button" data-model-reset>Reset view</button>
+        <span class="muted" data-model-status>Loading</span>
+      </div>
     </div>
-    <div class="model-stage" data-model-stage></div>
-    <div class="drift-actions">
-      <button type="button" data-model-reset>Reset view</button>
-      <span class="muted" data-model-status>Loading</span>
+    <div
+      class="model"
+      data-model
+      data-src="{{ '/assets/models/wh40k-markers.stl' | relative_url }}">
+      <div class="drift-head">
+        <p class="subhead drift-label">WH40K Markers</p>
+        <p class="muted drift-help">
+          Printed Tau spotting icons for the table. Same orbit controls.
+        </p>
+      </div>
+      <div class="model-stage" data-model-stage></div>
+      <div class="drift-actions">
+        <button type="button" data-model-reset>Reset view</button>
+        <span class="muted" data-model-status>Loading</span>
+      </div>
     </div>
   </div>
 </section>

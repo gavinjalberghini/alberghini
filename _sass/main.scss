@@ -524,7 +524,8 @@ p {
   }
 
   .card-grid,
-  .hobby-list {
+  .hobby-list,
+  .model-grid {
     grid-template-columns: 1fr;
   }
 
@@ -647,14 +648,21 @@ p {
   color: var(--brand);
 }
 
-.model {
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   margin-top: 1.8rem;
+}
+
+.model {
+  min-width: 0;
 }
 
 .model-stage {
   position: relative;
   width: 100%;
-  height: 360px;
+  aspect-ratio: 1;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 12px;
