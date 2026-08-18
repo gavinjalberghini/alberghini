@@ -347,11 +347,15 @@
       };
     }
 
+    function bagHas(bag, point) {
+      return bag.indexOf(point) !== -1;
+    }
+
     function draw() {
       var w = canvas.width;
       var h = canvas.height;
-      var step = 30;
-      var x, y, votes, agree, c, i, pos;
+      var step = 16;
+      var x, y, votes, agree, c, i, pos, used;
       ctx.clearRect(0, 0, w, h);
       for (y = 0; y < h; y += step) {
         for (x = 0; x < w; x += step) {
@@ -362,18 +366,25 @@
           });
           ctx.fillStyle = c
             ? agree
-              ? "rgba(94, 234, 212, 0.16)"
-              : "rgba(94, 234, 212, 0.05)"
+              ? "rgba(94, 234, 212, 0.2)"
+              : "rgba(94, 234, 212, 0.08)"
             : agree
-              ? "rgba(251, 146, 60, 0.16)"
-              : "rgba(251, 146, 60, 0.05)";
+              ? "rgba(251, 146, 60, 0.2)"
+              : "rgba(251, 146, 60, 0.08)";
           ctx.fillRect(x, y, step, step);
-          for (i = 0; i < nBags; i += 1) {
-            pos = markAt(x + step / 2, y + step / 2, i, 8);
-            drawMark(i, pos.x, pos.y, 3.4, labelColor(votes[i]));
-          }
         }
       }
+      points.forEach(function (p) {
+        used = 0;
+        for (i = 0; i < nBags; i += 1) {
+          if (bagHas(bags[i], p)) used += 1;
+        }
+        for (i = 0; i < nBags; i += 1) {
+          if (!bagHas(bags[i], p)) continue;
+          pos = markAt(p.x * w, p.y * h, i, used > 1 ? 8 : 0);
+          drawMark(i, pos.x, pos.y, 5.5, labelColor(p.label));
+        }
+      });
       if (cursor) {
         votes = votesAt(cursor.x, cursor.y);
         paintVotes(votes);
@@ -391,12 +402,6 @@
       } else if (voteRow) {
         voteRow.hidden = true;
       }
-      points.forEach(function (p) {
-        ctx.beginPath();
-        ctx.arc(p.x * w, p.y * h, 5, 0, Math.PI * 2);
-        ctx.fillStyle = labelColor(p.label);
-        ctx.fill();
-      });
     }
 
     function setStatus() {
