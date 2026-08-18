@@ -12,5 +12,13 @@
     </div>
   </div>
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "{{ '/assets/js/vendor/three.module.min.js' | relative_url }}"
+      }
+    }
+  </script>
+  <script type="module" src="{{ '/assets/js/model-boot.js' | relative_url }}"></script>
 </body>
 </html>

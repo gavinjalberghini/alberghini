@@ -187,4 +187,22 @@ permalink: /
       </li>
     {% endfor %}
   </ul>
+
+  <div
+    class="model"
+    data-model
+    data-src="{{ '/assets/models/smashing-kup.stl' | relative_url }}">
+    <div class="drift-head">
+      <p class="subhead drift-label">Smashing Kup</p>
+      <p class="muted drift-help">
+        A custom motorcycle-bar clamp that quick-mounts to a Picatinny
+        rail. Drag to orbit, scroll to zoom.
+      </p>
+    </div>
+    <div class="model-stage" data-model-stage></div>
+    <div class="drift-actions">
+      <button type="button" data-model-reset>Reset view</button>
+      <span class="muted" data-model-status>Loading</span>
+    </div>
+  </div>
 </section>
