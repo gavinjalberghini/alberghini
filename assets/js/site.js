@@ -314,55 +314,87 @@
       if (call) call.setAttribute("data-label", String(majority(votes)));
     }
 
+    function labelColor(label) {
+      return label ? "#5eead4" : "#fb923c";
+    }
+
+    function drawMark(kind, x, y, r, fill, stroke) {
+      ctx.beginPath();
+      if (kind === 0) {
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+      } else if (kind === 1) {
+        ctx.rect(x - r, y - r, r * 2, r * 2);
+      } else {
+        ctx.moveTo(x, y - r);
+        ctx.lineTo(x + r * 0.95, y + r * 0.72);
+        ctx.lineTo(x - r * 0.95, y + r * 0.72);
+        ctx.closePath();
+      }
+      ctx.fillStyle = fill;
+      ctx.fill();
+      if (stroke) {
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = stroke;
+        ctx.stroke();
+      }
+    }
+
+    function markAt(cx, cy, kind, radius) {
+      var ang = (-Math.PI / 2) + (kind * (Math.PI * 2)) / nBags;
+      return {
+        x: cx + Math.cos(ang) * radius,
+        y: cy + Math.sin(ang) * radius
+      };
+    }
+
     function draw() {
       var w = canvas.width;
       var h = canvas.height;
-      var step = 16;
-      var x, y, votes, agree, c;
+      var step = 30;
+      var x, y, votes, agree, c, i, pos;
       ctx.clearRect(0, 0, w, h);
       for (y = 0; y < h; y += step) {
         for (x = 0; x < w; x += step) {
-          votes = votesAt(x / w, y / h);
+          votes = votesAt((x + step / 2) / w, (y + step / 2) / h);
           c = majority(votes);
           agree = votes.every(function (v) {
             return v === c;
           });
           ctx.fillStyle = c
             ? agree
-              ? "rgba(94, 234, 212, 0.2)"
-              : "rgba(94, 234, 212, 0.08)"
+              ? "rgba(94, 234, 212, 0.16)"
+              : "rgba(94, 234, 212, 0.05)"
             : agree
-              ? "rgba(251, 146, 60, 0.2)"
-              : "rgba(251, 146, 60, 0.08)";
+              ? "rgba(251, 146, 60, 0.16)"
+              : "rgba(251, 146, 60, 0.05)";
           ctx.fillRect(x, y, step, step);
+          for (i = 0; i < nBags; i += 1) {
+            pos = markAt(x + step / 2, y + step / 2, i, 8);
+            drawMark(i, pos.x, pos.y, 3.4, labelColor(votes[i]));
+          }
         }
       }
       if (cursor) {
         votes = votesAt(cursor.x, cursor.y);
         paintVotes(votes);
-        votes.forEach(function (v, i) {
-          var ang = (-Math.PI / 2) + (i * (Math.PI * 2)) / nBags;
-          var px = cursor.x * w + Math.cos(ang) * 16;
-          var py = cursor.y * h + Math.sin(ang) * 16;
-          ctx.beginPath();
-          ctx.arc(px, py, 5, 0, Math.PI * 2);
-          ctx.fillStyle = v ? "#5eead4" : "#fb923c";
-          ctx.fill();
-          ctx.lineWidth = 1.5;
-          ctx.strokeStyle = "#e7eaf0";
-          ctx.stroke();
-        });
+        for (i = 0; i < nBags; i += 1) {
+          pos = markAt(cursor.x * w, cursor.y * h, i, 18);
+          drawMark(i, pos.x, pos.y, 6, labelColor(votes[i]), "#e7eaf0");
+        }
         ctx.beginPath();
         ctx.arc(cursor.x * w, cursor.y * h, 6, 0, Math.PI * 2);
-        ctx.fillStyle = majority(votes) ? "#5eead4" : "#fb923c";
+        ctx.fillStyle = labelColor(majority(votes));
         ctx.fill();
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = "#e7eaf0";
+        ctx.stroke();
       } else if (voteRow) {
         voteRow.hidden = true;
       }
       points.forEach(function (p) {
         ctx.beginPath();
         ctx.arc(p.x * w, p.y * h, 5, 0, Math.PI * 2);
-        ctx.fillStyle = p.label ? "#5eead4" : "#fb923c";
+        ctx.fillStyle = labelColor(p.label);
         ctx.fill();
       });
     }

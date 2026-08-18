@@ -179,15 +179,16 @@ permalink: /
     <div class="drift-head">
       <p class="subhead drift-label">Ensemble</p>
       <p class="muted drift-help">
-        Three bagged kNNs vote. Same clicks as above. Resample draws
-        new bags — the paper's online-bagging idea, just slower.
+        Three bagged kNNs vote — circle, square, triangle. Each mark
+        is one bag's call; the center is the majority. Same clicks as
+        above. Resample draws new bags.
       </p>
     </div>
     <canvas class="drift-canvas" width="640" height="360" aria-label="Interactive bagged kNN ensemble sketch"></canvas>
     <div class="ensemble-votes" data-ensemble-votes hidden>
-      <span data-voter="0">A</span>
-      <span data-voter="1">B</span>
-      <span data-voter="2">C</span>
+      <span data-voter="0" data-mark="circle" aria-label="Circle bag"></span>
+      <span data-voter="1" data-mark="square" aria-label="Square bag"></span>
+      <span data-voter="2" data-mark="triangle" aria-label="Triangle bag"></span>
       <span class="ensemble-call" data-ensemble-call>Vote</span>
     </div>
     <div class="drift-actions">
