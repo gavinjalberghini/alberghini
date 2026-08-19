@@ -8,10 +8,16 @@ A static Jekyll build, served at
 Content lives in `_data/profile.yml` (bio, work, research, projects) and
 `index.html` (layout). Edit the YAML to update the page.
 
+Playable FRC games from the Grassfield mentorship live under `games/`.
+Copy a fresh Unity WebGL build in with `task games:sync` (reads
+`../GFRC/web`). The `.unityweb` files are large (~25–60 MB each); first
+load is slow, then the player caches them.
+
 ## Project structure
 
 ```text
 .
+├── games/                 # Unity WebGL players (GFRC 2022 / 2023)
 ├── _data/profile.yml      # All written content
 ├── index.html             # Single-page layout
 ├── _layouts/              # default layout
@@ -53,6 +59,7 @@ task serve     # http://localhost:4000/me/
 | `task docker:build` | Build the image for your local architecture       |
 | `task docker:serve` | Run it at <http://localhost:8080/me/>             |
 | `task docker:push`  | Manual arm64 build + push to GHCR                 |
+| `task games:sync`   | Copy WebGL builds from `../GFRC/web`              |
 
 ## Self-hosting (Pantry homelab)
 

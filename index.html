@@ -111,8 +111,26 @@ permalink: /
   </ul>
 </section>
 
+<section id="play" class="section">
+  <h2><span class="section-num">05</span> Play</h2>
+  <p class="prose">{{ p.games.intro }}</p>
+  <p class="prose game-controls">{{ p.games.controls }}</p>
+  <div class="card-grid">
+    {% for game in p.games.items %}
+      <article class="card">
+        <p class="card-kicker">{{ game.season }}</p>
+        <h3>{{ game.name }}</h3>
+        <p>{{ game.summary }}</p>
+        <p class="card-links">
+          <a href="{{ game.play | relative_url }}">Play</a>
+        </p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
 <section id="work" class="section">
-  <h2><span class="section-num">05</span> Selected work</h2>
+  <h2><span class="section-num">06</span> Personal project highlights</h2>
   <div class="card-grid">
     {% for proj in p.projects %}
       <article class="card">
@@ -144,7 +162,7 @@ permalink: /
 </section>
 
 <section id="research" class="section">
-  <h2><span class="section-num">06</span> Research</h2>
+  <h2><span class="section-num">07</span> Research</h2>
   {% for paper in p.research %}
     <article class="card research-card">
       <p class="card-kicker">{{ paper.kind }}</p>
@@ -177,7 +195,7 @@ permalink: /
 </section>
 
 <section id="hobbies" class="section">
-  <h2><span class="section-num">07</span> Hobbies</h2>
+  <h2><span class="section-num">08</span> Hobbies</h2>
   <p class="prose">{{ p.hobbies.intro }}</p>
   <ul class="hobby-list">
     {% for item in p.hobbies.items %}

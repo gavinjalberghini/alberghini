@@ -106,6 +106,7 @@ tasks:
         --disable-external
         --swap-urls "^{{.BASEURL}}:"
         --ignore-urls "/^https:\\/\\/(github-readme-stats|streak-stats)\\./"
+        --ignore-files "/\\/games\\//"
 
   test:external:
     desc: Build, then also validate external links (slower, needs network)
@@ -116,6 +117,32 @@ tasks:
         --swap-urls "^{{.BASEURL}}:"
         --ignore-status-codes "0,403,429,503"
         --ignore-urls "/^https:\\/\\/(github-readme-stats|streak-stats)\\./"
+        --ignore-files "/\\/games\\//"
+
+  games:sync:
+    desc: Copy GFRC WebGL builds into games/ (from ../GFRC/web)
+    summary: |
+      Copies Unity Build artifacts from the sibling GFRC repo. Custom
+      player pages (games/<year>/index.html) are left alone. Re-run after
+      a WebGL rebuild in GFRC.
+    cmds:
+      - |
+        set -euo pipefail
+        src="../GFRC/web"
+        if [[ ! -d "$src" ]]; then
+          echo "error: $src not found (expected the GFRC repo next to this one)" >&2
+          exit 1
+        fi
+        for year in 2022 2023; do
+          if [[ -d "$src/$year/Build" ]]; then
+            mkdir -p "games/$year/Build"
+            rsync -a --delete --include='*.loader.js' --include='*.unityweb' --exclude='*' \
+              "$src/$year/Build/" "games/$year/Build/"
+            echo "synced $year ($(du -sh "games/$year/Build" | cut -f1))"
+          else
+            echo "skip $year (no $src/$year/Build yet)"
+          fi
+        done
 
   check:
     desc: Run lint + build + test (use this before opening a pull request)

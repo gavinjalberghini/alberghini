@@ -15,7 +15,7 @@ about:
   - >-
     Outside of work I am an active member of the STEM community. Mentorship 
     and giving back to the next generation are hallmarks of my upbringing. I
-    am a dedicated Teacher, FIRST Robotics Mentor, and Capstone Advisor. 
+    am a dedicated Teacher, FIRST Robotics Mentor, and Capstone Advisor.
 
 links:
   - label: GitHub
@@ -74,7 +74,7 @@ experience:
       - Drive cost, reliability, and access that enables rapid science and engineering.
       - Bring security to the forefront through rigorous compliance programs and operational best practices.
     outcomes:
-      - CMMC Level 2 compliance for a 300+ developer environment. 
+      - CMMC Level 2 compliance for a 300+ developer environment.
     stack:
       - AWS
       - Kubernetes
@@ -160,6 +160,25 @@ mentoring:
     - title: Robot Inspector
       org: FRC Southwest Virginia
       url: https://www.firstchesapeake.org/frc
+
+games:
+  intro: >-
+    Browser builds of the FRC games we made with Grassfield High School
+    STEM Academy. First load can take a minute; after that the player
+    caches the download.
+  controls: >-
+    Mouse and keyboard are the main controls. Xbox and PlayStation-style
+    controllers work too — click the game, then press a button on the pad
+    so the browser can see it.
+  items:
+    - name: GFRC 2022
+      season: Rapid React
+      play: /games/2022/
+      summary: Drive, intake, and shoot in a browser build of the 2022 FRC game.
+    - name: GFRC 2023
+      season: Charged Up
+      play: /games/2023/
+      summary: Cones, cubes, and the charge station from the 2023 season.
 
 hobbies:
   intro: Making, machines, and the shop.

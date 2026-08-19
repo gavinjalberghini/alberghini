@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} &middot; {{ site.title }}</title>
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body
+  class="game-page"
+  data-year="{{ page.year }}"
+  data-product="{{ page.product }}">
+  <header class="game-bar">
+    <a class="game-back" href="{{ '/' | relative_url }}#play">Back to resume</a>
+    <div class="game-title">
+      <strong>{{ page.title }}</strong>
+      {% if page.season %}<span>{{ page.season }}</span>{% endif %}
+    </div>
+    <p class="game-hint">
+      Mouse and keyboard are the main controls. Xbox and PlayStation-style
+      controllers work too — click the game, then press a button on the pad
+      so the browser can see it.
+      <span class="game-pad" data-game-pad hidden>Controller connected</span>
+    </p>
+    <button type="button" class="game-full" data-game-full>Fullscreen</button>
+  </header>
+  <div id="unity-container" class="unity-desktop">
+    <canvas id="unity-canvas" width="960" height="600" tabindex="0"></canvas>
+    <div id="unity-loading-bar">
+      <p class="game-loading-label">Loading {{ page.title }}</p>
+      <div id="unity-progress-bar-empty">
+        <div id="unity-progress-bar-full"></div>
+      </div>
+    </div>
+    <div id="unity-warning"></div>
+  </div>
+  <script src="{{ '/assets/js/game.js' | relative_url }}" defer></script>
+</body>
+</html>
