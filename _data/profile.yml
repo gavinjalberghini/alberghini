@@ -151,14 +151,16 @@ mentoring:
           controllers work too — click the game, then press a button on the pad
           so the browser can see it. First load can take a minute.
         items:
-          - name: GFRC 2022
-            season: Rapid React
+          - name: GFRC
+            year: 2022
+            season: RAPID REACT
             play: /games/2022/
-            summary: Drive, intake, and shoot in a browser build of the 2022 FRC game.
-          - name: GFRC 2023
-            season: Charged Up
+            video: LgniEjI9cCM
+          - name: GFRC
+            year: 2023
+            season: CHARGED UP
             play: /games/2023/
-            summary: Cones, cubes, and the charge station from the 2023 season.
+            video: 0zpflsYc4PA
 
     - title: Machine Learning Advisor
       org: Hampton Governor's School Senior Capstone

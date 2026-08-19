@@ -128,16 +128,21 @@ permalink: /
             </ul>
           {% endif %}
           {% if role.games %}
-            <div class="card-grid">
+            <div class="season-grid">
               {% for game in role.games.items %}
-                <article class="card">
-                  <p class="card-kicker">{{ game.season }}</p>
-                  <h3>{{ game.name }}</h3>
-                  <p>{{ game.summary }}</p>
-                  <p class="card-links">
-                    <a href="{{ game.play | relative_url }}">Play</a>
-                  </p>
-                </article>
+                <a class="season-card" href="{{ game.play | relative_url }}">
+                  <img
+                    src="https://img.youtube.com/vi/{{ game.video }}/mqdefault.jpg"
+                    alt="Play {{ game.name }} {{ game.year }} {{ game.season }}"
+                    width="320"
+                    height="180"
+                    loading="lazy"
+                  >
+                  <span class="season-caption">
+                    <span class="season-year">{{ game.year }}</span>
+                    <span class="season-game">{{ game.name }}</span>
+                  </span>
+                </a>
               {% endfor %}
             </div>
             {% if role.games.intro %}
