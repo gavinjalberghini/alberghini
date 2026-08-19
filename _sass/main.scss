@@ -373,14 +373,15 @@ p {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.45rem;
+  width: 100%;
   margin: 0.85rem 0 0.25rem;
   padding: 0;
-  list-style: none;
 }
 
 .season-card {
   position: relative;
   display: block;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: calc(var(--radius) - 4px);
@@ -398,6 +399,7 @@ p {
 .season-card img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;

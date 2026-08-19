@@ -145,25 +145,23 @@ permalink: /
             {% endif %}
           {% endif %}
           {% if role.seasons %}
-            <ul class="season-grid">
+            <div class="season-grid">
               {% for season in role.seasons %}
-                <li>
-                  <a class="season-card" href="{{ season.url }}" target="_blank" rel="noopener">
-                    <img
-                      src="https://img.youtube.com/vi/{{ season.video }}/mqdefault.jpg"
-                      alt="{{ season.year }} {{ season.game }} game reveal"
-                      width="320"
-                      height="180"
-                      loading="lazy"
-                    >
-                    <span class="season-caption">
-                      <span class="season-year">{{ season.year }}</span>
-                      <span class="season-game">{{ season.game }}</span>
-                    </span>
-                  </a>
-                </li>
+                <a class="season-card" href="{{ season.url }}" target="_blank" rel="noopener">
+                  <img
+                    src="https://img.youtube.com/vi/{{ season.video }}/mqdefault.jpg"
+                    alt="{{ season.year }} {{ season.game }} game reveal"
+                    width="320"
+                    height="180"
+                    loading="lazy"
+                  >
+                  <span class="season-caption">
+                    <span class="season-year">{{ season.year }}</span>
+                    <span class="season-game">{{ season.game }}</span>
+                  </span>
+                </a>
               {% endfor %}
-            </ul>
+            </div>
           {% endif %}
         </details>
       </li>
