@@ -128,8 +128,6 @@ permalink: /
             </ul>
           {% endif %}
           {% if role.games %}
-            <p class="job-outcomes-label">Play</p>
-            <p class="prose">{{ role.games.intro }}</p>
             <div class="card-grid">
               {% for game in role.games.items %}
                 <article class="card">
@@ -142,22 +140,26 @@ permalink: /
                 </article>
               {% endfor %}
             </div>
+            {% if role.games.intro %}
+              <p class="prose">{{ role.games.intro }}</p>
+            {% endif %}
           {% endif %}
           {% if role.seasons %}
-            <p class="job-outcomes-label">Season reveals</p>
             <ul class="season-grid">
               {% for season in role.seasons %}
                 <li>
                   <a class="season-card" href="{{ season.url }}" target="_blank" rel="noopener">
                     <img
-                      src="https://img.youtube.com/vi/{{ season.video }}/hqdefault.jpg"
+                      src="https://img.youtube.com/vi/{{ season.video }}/mqdefault.jpg"
                       alt="{{ season.year }} {{ season.game }} game reveal"
-                      width="480"
-                      height="360"
+                      width="320"
+                      height="180"
                       loading="lazy"
                     >
-                    <span class="season-year">{{ season.year }}</span>
-                    <span class="season-game">{{ season.game }}</span>
+                    <span class="season-caption">
+                      <span class="season-year">{{ season.year }}</span>
+                      <span class="season-game">{{ season.game }}</span>
+                    </span>
                   </a>
                 </li>
               {% endfor %}
