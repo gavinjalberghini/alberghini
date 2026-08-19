@@ -644,6 +644,7 @@ p {
   color: var(--text-soft);
   font-family: var(--mono);
   font-size: 0.72rem;
+  text-decoration: none;
 }
 
 .stack-node[data-kind="custom"] {
@@ -651,9 +652,11 @@ p {
 }
 
 .stack-node:hover,
-.stack-node[aria-pressed="true"] {
+.stack-node:focus-visible,
+.stack-node.is-active {
   border-color: var(--brand-dim);
   color: var(--brand);
+  text-decoration: none;
 }
 
 .stack-blurb {

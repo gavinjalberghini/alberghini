@@ -39,20 +39,19 @@
     if (!board) return;
     var blurb = board.querySelector("[data-stack-blurb]");
     var nodes = board.querySelectorAll(".stack-node");
-    nodes.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var on = btn.getAttribute("aria-pressed") === "true";
-        nodes.forEach(function (n) {
-          n.setAttribute("aria-pressed", "false");
-        });
-        if (on) {
-          blurb.hidden = true;
-          blurb.textContent = "";
-          return;
-        }
-        btn.setAttribute("aria-pressed", "true");
-        blurb.textContent = btn.getAttribute("data-blurb") || "";
-        blurb.hidden = false;
+    function show(node) {
+      nodes.forEach(function (n) {
+        n.classList.toggle("is-active", n === node);
+      });
+      blurb.textContent = node.getAttribute("data-blurb") || "";
+      blurb.hidden = false;
+    }
+    nodes.forEach(function (node) {
+      node.addEventListener("mouseenter", function () {
+        show(node);
+      });
+      node.addEventListener("focus", function () {
+        show(node);
       });
     });
   }

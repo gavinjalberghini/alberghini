@@ -16,15 +16,16 @@ permalink: /
     <p class="stack-prompt">{{ p.platform.intro }}</p>
     <div class="stack-grid" role="list">
       {% for item in p.platform.items %}
-        <button
-          type="button"
+        <a
           class="stack-node"
           role="listitem"
+          href="{{ item.url }}"
+          target="_blank"
+          rel="noopener"
           data-kind="{{ item.kind }}"
-          data-blurb="{{ item.blurb | escape }}"
-          aria-pressed="false">
+          data-blurb="{{ item.blurb | escape }}">
           {{ item.name }}
-        </button>
+        </a>
       {% endfor %}
     </div>
     <p class="stack-blurb" data-stack-blurb hidden></p>

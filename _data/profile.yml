@@ -26,40 +26,51 @@ links:
     url: https://doi.org/10.1016/j.neucom.2022.01.075
 
 platform:
-  intro: Click a technology to see more.
+  intro: Hover for a note, click for the docs.
   items:
     - name: Terraform
       kind: oss
+      url: https://developer.hashicorp.com/terraform/docs
       blurb: Idempotent AWS and K8s configurations as code.
     - name: Karpenter
       kind: oss
+      url: https://karpenter.sh/docs/
       blurb: Compute provisioning and orchestration for EKS.
     - name: Kyverno
       kind: oss
+      url: https://kyverno.io/docs/
       blurb: Policy as code for the clustered environments.
     - name: ACK
       kind: oss
+      url: https://aws-controllers-k8s.github.io/docs/
       blurb: AWS controllers for Kubernetes. Cloud resources as CRs.
     - name: Grafana LGTM
       kind: oss
+      url: https://grafana.com/docs/
       blurb: Full observability stack for metrics, logs, and traces in one pane.
     - name: GHA ARC
       kind: oss
+      url: https://docs.github.com/en/actions/concepts/runners/actions-runner-controller
       blurb: Actions Runner Controller. CI that lives next to the codebase.
     - name: Harbor
       kind: oss
+      url: https://goharbor.io/docs/
       blurb: Internal registry for container images.
     - name: Calico
       kind: oss
+      url: https://docs.tigera.io/calico/latest/about/
       blurb: Cluster networking and network policies.
     - name: AWS LBC
       kind: oss
+      url: https://kubernetes-sigs.github.io/aws-load-balancer-controller/
       blurb: AWS Load Balancer Controller for ingress traffic.
     - name: cert-manager
       kind: oss
+      url: https://cert-manager.io/docs/
       blurb: Certificates as cluster objects.
     - name: NVIDIA GPU
       kind: oss
+      url: https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html
       blurb: Device plugin for GPU visibility in Jupyter and Spark.
 
 experience:
@@ -195,6 +206,22 @@ mentoring:
           org: FRC Southwest Virginia
           url: https://www.firstchesapeake.org/frc
       seasons:
+        - year: 2014
+          game: AERIAL ASSIST
+          url: https://www.youtube.com/watch?v=f5zWzICG5to
+          video: f5zWzICG5to
+        - year: 2015
+          game: RECYCLE RUSH
+          url: https://www.youtube.com/watch?v=W6UYFKNGHJ8
+          video: W6UYFKNGHJ8
+        - year: 2016
+          game: STRONGHOLD
+          url: https://www.youtube.com/watch?v=VqOKzoHJDjA
+          video: VqOKzoHJDjA
+        - year: 2017
+          game: STEAMWORKS
+          url: https://www.youtube.com/watch?v=EMiNmJW7enI
+          video: EMiNmJW7enI
         - year: 2022
           game: RAPID REACT
           url: https://www.youtube.com/watch?v=LgniEjI9cCM
