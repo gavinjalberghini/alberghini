@@ -142,43 +142,78 @@ mentoring:
     - title: Unity Mentor
       org: Grassfield High School STEM Academy
       url: https://www.cpschools.com/o/gfh/page/governors-stem-academy
+      summary: >-
+        World-building and gameplay workshops with the STEM Academy.
+        Two of those FRC seasons became browser games you can play here.
+      games:
+        intro: >-
+          Mouse and keyboard are the main controls. Xbox and PlayStation-style
+          controllers work too — click the game, then press a button on the pad
+          so the browser can see it. First load can take a minute.
+        items:
+          - name: GFRC 2022
+            season: Rapid React
+            play: /games/2022/
+            summary: Drive, intake, and shoot in a browser build of the 2022 FRC game.
+          - name: GFRC 2023
+            season: Charged Up
+            play: /games/2023/
+            summary: Cones, cubes, and the charge station from the 2023 season.
+
     - title: Machine Learning Advisor
       org: Hampton Governor's School Senior Capstone
       url: https://nhrec.org/gsst/
+      summary: >-
+        Advise senior capstone work in applied machine learning.
+
     - title: Capstone Mentor
       org: Old Dominion University Senior Capstone
       url: https://www.odu.edu/
-    - title: Robot Programming Mentor
-      org: Collegiate School
-      url: https://collegiate-va.org/
-    - title: Robot Programming Mentor
-      org: Hickory High School
-      url: https://cpschools.com/o/hhs
-    - title: Control System Advisor
-      org: FRC Portsmouth and Chesapeake
-      url: https://www.firstchesapeake.org/frc
-    - title: Robot Inspector
-      org: FRC Southwest Virginia
-      url: https://www.firstchesapeake.org/frc
+      summary: >-
+        Mentor an ODU senior capstone team through design and delivery.
 
-games:
-  intro: >-
-    Browser builds of the FRC games we made with Grassfield High School
-    STEM Academy. First load can take a minute; after that the player
-    caches the download.
-  controls: >-
-    Mouse and keyboard are the main controls. Xbox and PlayStation-style
-    controllers work too — click the game, then press a button on the pad
-    so the browser can see it.
-  items:
-    - name: GFRC 2022
-      season: Rapid React
-      play: /games/2022/
-      summary: Drive, intake, and shoot in a browser build of the 2022 FRC game.
-    - name: GFRC 2023
-      season: Charged Up
-      play: /games/2023/
-      summary: Cones, cubes, and the charge station from the 2023 season.
+    - title: FIRST Robotics Mentor
+      org: FIRST Chesapeake
+      url: https://www.firstchesapeake.org/frc
+      summary: >-
+        Programming mentor at two high schools, control-system advisor at
+        Portsmouth and Chesapeake events, and robot inspector in Southwest
+        Virginia.
+      places:
+        - role: Robot Programming Mentor
+          org: Collegiate School
+          url: https://collegiate-va.org/
+        - role: Robot Programming Mentor
+          org: Hickory High School
+          url: https://cpschools.com/o/hhs
+        - role: Control System Advisor
+          org: FRC Portsmouth and Chesapeake
+          url: https://www.firstchesapeake.org/frc
+        - role: Robot Inspector
+          org: FRC Southwest Virginia
+          url: https://www.firstchesapeake.org/frc
+      seasons:
+        - year: 2022
+          game: RAPID REACT
+          url: https://www.youtube.com/watch?v=LgniEjI9cCM
+          video: LgniEjI9cCM
+        - year: 2023
+          game: CHARGED UP
+          url: https://www.youtube.com/watch?v=0zpflsYc4PA
+          video: 0zpflsYc4PA
+        - year: 2024
+          game: CRESCENDO
+          url: https://www.youtube.com/watch?v=9keeDyFxzY4
+          video: 9keeDyFxzY4
+        - year: 2025
+          game: REEFSCAPE
+          url: https://www.youtube.com/watch?v=YWbxcjlY9JY
+          video: YWbxcjlY9JY
+        - year: 2026
+          game: REBUILT
+          url: https://www.youtube.com/watch?v=_fybREErgyM
+          video: _fybREErgyM
+
 
 hobbies:
   intro: Making, machines, and the shop.
