@@ -358,7 +358,7 @@ projects:
   - name: AESAKNNS
     url: https://doi.org/10.1016/j.neucom.2022.01.075
     repo: https://github.com/canoalberto/AESAKNNS
-    type: education
+    type: professional
     summary: Reference code for the Neurocomputing paper.
 
   - name: Unity Learning Objectives
@@ -368,17 +368,17 @@ projects:
 
   - name: Shifting Reality VR
     url: https://github.com/gavinjalberghini/Shifting-Reality-VR
-    type: professional
+    type: education
     summary: Unity world-building for the HTC Vive.
 
   - name: Hack-Heist
     url: https://github.com/gavinjalberghini/Hack-Heist
-    type: professional
+    type: education
     summary: Android game that teaches Java to beginners.
 
   - name: NNSB-CCIPT
     url: https://github.com/gavinjalberghini/NNSB-CCIPT
-    type: personal
+    type: professional
     summary: Climate-impact tool for Hampton Roads.
 
   - name: Operating-System-Simulation
