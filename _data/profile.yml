@@ -14,8 +14,8 @@ about:
     budget and support data science activities across petabytes of information.
   - >-
     Outside of work I am an active member of the STEM community. Mentorship 
-    and giving back to the next generation are hallmarks of my upbringing. I
-    am a dedicated Teacher, FIRST Robotics Mentor, and Capstone Advisor.
+    and giving back to the next generation are important to me. I
+    am a dedicated teacher, FIRST Robotics mentor, and capstone advisor.
 
 links:
   - label: GitHub
@@ -85,7 +85,8 @@ experience:
       - Drive cost, reliability, and access that enables rapid science and engineering.
       - Bring security to the forefront through rigorous compliance programs and operational best practices.
     outcomes:
-      - CMMC Level 2 compliance for a 300+ developer environment.
+      - CMMC Level 2 compliance for a 300+ user environment.
+      - Fully declarative network infrastructure for platform tenants.
     stack:
       - AWS
       - Kubernetes
