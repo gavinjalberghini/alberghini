@@ -1,5 +1,5 @@
 name: Gavin Alberghini
-role: MLOps & DevSecOps Team Lead
+role: DevSecOps Team Lead
 location: Virginia, USA
 lede: >-
   DevSecOps Lead Engineer supporting software engineering and 
@@ -10,7 +10,7 @@ lede: >-
 about:
   - >-
     I run a lean DevSecOps team supporting AWS govcloud collaborative
-    environments at scale. These     environments operate on a seven-figure 
+    environments at scale. These environments operate on a seven-figure 
     budget and support data science activities across petabytes of information.
   - >-
     Outside of work I am an active member of the STEM community. Mentorship 
@@ -22,12 +22,14 @@ links:
     url: https://github.com/gavinjalberghini
   - label: LinkedIn
     url: https://www.linkedin.com/in/gavin-alberghini-76231a1b2
-  - label: Paper
-    url: https://doi.org/10.1016/j.neucom.2022.01.075
 
 platform:
-  intro: Hover for a note, click for the docs.
+  intro: Technologies in my daily work & hobbies. Hover for a note, click for the docs.
   items:
+    - name: Kubernetes
+      kind: oss
+      url: https://kubernetes.io/docs/home/
+      blurb: Container orchestration for the clustered environments.
     - name: Terraform
       kind: oss
       url: https://developer.hashicorp.com/terraform/docs
@@ -72,6 +74,51 @@ platform:
       kind: oss
       url: https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html
       blurb: Device plugin for GPU visibility in Jupyter and Spark.
+    - name: Unity 
+      kind: oss
+      url: https://unity.com/
+      blurb: Game engine for creating 3D, 2D, and VR games.
+    - name: MLflow
+      kind: oss
+      url: https://mlflow.org/docs/latest/index.html
+      blurb: Model tracking and deployment for machine learning.
+    - name: Dagster
+      kind: oss
+      url: https://dagster.io/docs/latest/index.html
+      blurb: Data orchestration and pipeline management.
+    - name: Argo CD
+      kind: oss
+      url: https://argo-cd.readthedocs.io/en/stable/
+      blurb: Declarative GitOps for Kubernetes.
+    - name: AWS GovCloud 
+      kind: paas
+      url: https://aws.amazon.com/govcloud/
+      blurb: AWS GovCloud for government and defense customers.
+    - name: Ansible 
+      kind: oss
+      url: https://docs.ansible.com/ansible/latest/index.html
+      blurb: Configuration management for infrastructure.
+    - name: InSpec
+      kind: oss
+      url: https://docs.chef.io/inspec/
+      blurb: Compliance and security scanning for infrastructure.
+    - name: Trivy
+      kind: oss
+      url: https://aquasecurity.github.io/trivy/latest/
+      blurb: Vulnerability scanning for containers and images.
+    - name: SonarQube
+      kind: oss
+      url: https://www.sonarqube.org/docs/
+      blurb: Code quality and security scanning for codebases.
+    - name: Java 
+      kind: language
+      url: https://docs.oracle.com/en/java/
+      blurb: Programming language for the JVM.
+    - name: Python
+      kind: language
+      url: https://docs.python.org/
+      blurb: Programming language for the Python ecosystem.
+    
 
 experience:
   - org: MITRE
@@ -87,6 +134,8 @@ experience:
     outcomes:
       - CMMC Level 2 compliance for a 300+ user environment.
       - Fully declarative network infrastructure for platform tenants.
+      - Self service compliant IaC provisioning for platform tenants.
+      - Team growth by 3 engineers.
     stack:
       - AWS
       - Kubernetes
@@ -102,7 +151,7 @@ experience:
       - Monitoring stack for observability and uptime.
     outcomes:
       - GPU for Spark and JupyterHub supporting 200+ sessions, 800+ GPU hours / year.
-      - Incident durations reduced by 90% through observability and alerting.
+      - Data ingest incident durations reduced by 90% through observability and alerting.
     stack:
       - EKS
       - Karpenter
@@ -114,9 +163,13 @@ experience:
     title: Cloud DevSecOps Engineer
     dates: Jun 2021 — Mar 2023
     location: Hampton, VA
-    summary: Work across MITRE internal cloud environments to standardize access, compliance, and cost.
+    summary: >-
+      Work across MITRE internal cloud environments to standardize access, 
+      compliance, and cost.
     bullets:
-      - InSpec against CIS and NIST.
+      - Bootstrap the MITRE Engineering Platform via IaC and GitOps.
+      - Team growth by 1 engineer.
+    outcomes:
       - Nightly stop, Spot, tags — operating cost to about a third.
     stack:
       - AWS
@@ -124,7 +177,17 @@ experience:
       - InSpec
       - IAM
 
-  - org: Virginia Commonwealth University
+  - org: Virginia Commonwealth University Arts & Sciences College
+    title: Computer Science Instructor
+    dates: 2020 — 2021
+    location: Richmond, VA
+    summary: Teaching support for the Computer Science department.
+    stack:
+      - Unity
+      - Kinect V2
+      - HTC Vive
+
+  - org: Virginia Commonwealth University Engineering College
     title: Lecture, Lab & Research Assistant
     dates: 2019 — 2021
     location: Richmond, VA
@@ -280,13 +343,13 @@ projects:
   - name: FRC-SS
     url: https://alberghini.io/frc-ss
     repo: https://github.com/gavinjalberghini/FRC-SS
-    kind: Playbook
+    type: personal
     summary: How to run an FRC team — control systems, code, the season.
 
   - name: ML Bootcamp
     url: https://github.com/gavinjalberghini/ml-bootcamp
     repo: https://github.com/gavinjalberghini/ml-bootcamp
-    kind: Mentorship
+    type: education
     summary: >-
       Template repo for a mentorship sequence in applied ML — kNN,
       ensembles, streams, drift, optional Jetson. Issues travel with
@@ -295,34 +358,35 @@ projects:
   - name: AESAKNNS
     url: https://doi.org/10.1016/j.neucom.2022.01.075
     repo: https://github.com/canoalberto/AESAKNNS
-    kind: Research
+    type: education
     summary: Reference code for the Neurocomputing paper.
 
   - name: Unity Learning Objectives
     url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
-    kind: Workshops
+    type: professional
     summary: Unity workshops that fold hardware into world-building.
 
   - name: Shifting Reality VR
     url: https://github.com/gavinjalberghini/Shifting-Reality-VR
-    kind: VR
+    type: professional
     summary: Unity world-building for the HTC Vive.
 
   - name: Hack-Heist
     url: https://github.com/gavinjalberghini/Hack-Heist
-    kind: Teaching
+    type: professional
     summary: Android game that teaches Java to beginners.
 
-archive:
   - name: NNSB-CCIPT
     url: https://github.com/gavinjalberghini/NNSB-CCIPT
-    lang: Python
+    type: personal
     summary: Climate-impact tool for Hampton Roads.
+
   - name: Operating-System-Simulation
     url: https://github.com/gavinjalberghini/Operating-System-Simulation
-    lang: Java
+    type: education
     summary: OS simulator for coverage-tool experiments.
+
   - name: Protein-Interaction-Classifier
     url: https://github.com/gavinjalberghini/Protein-Interaction-Classifier
-    lang: Python
+    type: education
     summary: Protein–DNA/RNA interaction classifiers.
