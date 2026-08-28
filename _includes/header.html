@@ -8,18 +8,7 @@
       height="720">
     <p class="rail-role">{{ site.data.profile.role }}</p>
     <a class="rail-name" href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
-    {% if site.data.profile.location %}
-      <p class="rail-location">{{ site.data.profile.location }}</p>
-    {% endif %}
     <p class="rail-lede">{{ site.data.profile.lede }}</p>
-
-    {% if site.data.profile.audiences %}
-      <nav class="rail-audiences" aria-label="Jump by audience">
-        {% for item in site.data.profile.audiences %}
-          <a href="{{ '/' | relative_url }}{{ item.href }}">{{ item.label }}</a>
-        {% endfor %}
-      </nav>
-    {% endif %}
 
     <nav class="rail-nav" aria-label="Primary">
       <a href="#about">About</a>
@@ -32,14 +21,6 @@
     </nav>
 
     <ul class="rail-links">
-      {% if site.data.profile.email %}
-        <li>
-          <a href="mailto:{{ site.data.profile.email }}">Email</a>
-        </li>
-      {% endif %}
-      <li>
-        <a href="{{ '/resume/' | relative_url }}">Resume</a>
-      </li>
       {% for link in site.data.profile.links %}
         <li>
           <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
