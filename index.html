@@ -5,6 +5,14 @@ permalink: /
 ---
 
 {% assign p = site.data.profile %}
+{% assign playable = nil %}
+{% for role in p.mentoring.roles %}
+  {% if role.games %}
+    {% assign playable = role.games %}
+  {% endif %}
+{% endfor %}
+{% assign featured = p.projects | where: "featured", true %}
+{% assign earlier = p.projects | where_exp: "proj", "proj.featured != true" %}
 
 <section id="about" class="section">
   <h2><span class="section-num">01</span> About</h2>
@@ -37,15 +45,20 @@ permalink: /
   <ol class="jobs">
     {% for job in p.experience %}
       <li>
-        <details class="job">
+        <details class="job"{% if forloop.first %} open{% endif %}>
           <summary>
-            <span class="job-title">{{ job.title }} · {{ job.org }}</span>
+            <span class="job-head">
+              <span class="job-title">{{ job.title }} · {{ job.org }}</span>
+              <span class="job-toggle" aria-hidden="true"></span>
+            </span>
             <span class="job-meta">
               <span>{{ job.dates }}</span>
               {% if job.location %}<span>{{ job.location }}</span>{% endif %}
             </span>
+            {% if job.summary %}
+              <span class="job-lede">{{ job.summary }}</span>
+            {% endif %}
           </summary>
-          <p class="prose">{{ job.summary }}</p>
           {% if job.bullets and job.bullets.size > 0 %}
             <ul class="job-bullets">
               {% for bullet in job.bullets %}
@@ -96,12 +109,39 @@ permalink: /
 <section id="mentoring" class="section">
   <h2><span class="section-num">04</span> Mentoring</h2>
   <p class="prose">{{ p.mentoring.intro }}</p>
+
+  {% if playable %}
+    <div class="season-grid season-grid-playable">
+      {% for game in playable.items %}
+        <a class="season-card" href="{{ game.play | relative_url }}">
+          <img
+            src="https://img.youtube.com/vi/{{ game.video }}/mqdefault.jpg"
+            alt="Play {{ game.name }} {{ game.year }} {{ game.season }}"
+            width="320"
+            height="180"
+            loading="lazy"
+          >
+          <span class="season-caption">
+            <span class="season-year">{{ game.year }} · Play</span>
+            <span class="season-game">{{ game.season }}</span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+    {% if playable.intro %}
+      <p class="prose season-help">{{ playable.intro }}</p>
+    {% endif %}
+  {% endif %}
+
   <ol class="jobs">
     {% for role in p.mentoring.roles %}
       <li>
         <details class="job">
           <summary>
-            <span class="job-title">{{ role.title }}</span>
+            <span class="job-head">
+              <span class="job-title">{{ role.title }}</span>
+              <span class="job-toggle" aria-hidden="true"></span>
+            </span>
             <span class="job-meta">
               {% if role.url %}
                 <a href="{{ role.url }}" target="_blank" rel="noopener">{{ role.org }}</a>
@@ -109,10 +149,10 @@ permalink: /
                 {{ role.org }}
               {% endif %}
             </span>
+            {% if role.summary %}
+              <span class="job-lede">{{ role.summary }}</span>
+            {% endif %}
           </summary>
-          {% if role.summary %}
-            <p class="prose">{{ role.summary }}</p>
-          {% endif %}
           {% if role.places %}
             <p class="job-outcomes-label">Where</p>
             <ul class="job-bullets">
@@ -127,28 +167,6 @@ permalink: /
                 </li>
               {% endfor %}
             </ul>
-          {% endif %}
-          {% if role.games %}
-            <div class="season-grid">
-              {% for game in role.games.items %}
-                <a class="season-card" href="{{ game.play | relative_url }}">
-                  <img
-                    src="https://img.youtube.com/vi/{{ game.video }}/mqdefault.jpg"
-                    alt="Play {{ game.name }} {{ game.year }} {{ game.season }}"
-                    width="320"
-                    height="180"
-                    loading="lazy"
-                  >
-                  <span class="season-caption">
-                    <span class="season-year">{{ game.year }}</span>
-                    <span class="season-game">{{ game.name }}</span>
-                  </span>
-                </a>
-              {% endfor %}
-            </div>
-            {% if role.games.intro %}
-              <p class="prose">{{ role.games.intro }}</p>
-            {% endif %}
           {% endif %}
           {% if role.seasons %}
             <div class="season-grid">
@@ -177,21 +195,50 @@ permalink: /
 
 <section id="work" class="section">
   <h2><span class="section-num">05</span> Personal Project Highlights</h2>
-  <div class="project-grid">
-    {% for proj in p.projects %}
-      <article class="card project-card" data-type="{{ proj.type }}">
-        <p class="card-kicker">{{ proj.type }}</p>
-        <h3>{{ proj.name }}</h3>
-        <p class="project-summary">{{ proj.summary }}</p>
-        <p class="card-links">
-          <a href="{{ proj.url }}" target="_blank" rel="noopener">Open</a>
-          {% if proj.repo and proj.repo != proj.url %}
-            <a href="{{ proj.repo }}" target="_blank" rel="noopener">GitHub</a>
-          {% endif %}
-        </p>
-      </article>
-    {% endfor %}
-  </div>
+  {% if featured.size > 0 %}
+    <div class="project-grid project-grid-featured">
+      {% for proj in featured %}
+        <article class="card project-card" data-type="{{ proj.type }}">
+          <p class="card-kicker">{{ proj.type }}</p>
+          <h3>{{ proj.name }}</h3>
+          <p class="project-summary">{{ proj.summary }}</p>
+          <p class="card-links">
+            <a href="{{ proj.url }}" target="_blank" rel="noopener">Open</a>
+            {% if proj.repo and proj.repo != proj.url %}
+              <a href="{{ proj.repo }}" target="_blank" rel="noopener">GitHub</a>
+            {% endif %}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if earlier.size > 0 %}
+    <details class="archive">
+      <summary>
+        <span class="job-head">
+          <span class="job-title">Earlier coursework and labs</span>
+          <span class="job-toggle" aria-hidden="true"></span>
+        </span>
+        <span class="job-lede">Student-era repos and the paper’s reference code.</span>
+      </summary>
+      <div class="project-grid">
+        {% for proj in earlier %}
+          <article class="card project-card" data-type="{{ proj.type }}">
+            <p class="card-kicker">{{ proj.type }}</p>
+            <h3>{{ proj.name }}</h3>
+            <p class="project-summary">{{ proj.summary }}</p>
+            <p class="card-links">
+              <a href="{{ proj.url }}" target="_blank" rel="noopener">Open</a>
+              {% if proj.repo and proj.repo != proj.url %}
+                <a href="{{ proj.repo }}" target="_blank" rel="noopener">GitHub</a>
+              {% endif %}
+            </p>
+          </article>
+        {% endfor %}
+      </div>
+    </details>
+  {% endif %}
 </section>
 
 <section id="research" class="section">

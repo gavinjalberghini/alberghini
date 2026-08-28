@@ -188,10 +188,37 @@ p {
   color: var(--brand);
 }
 
+.rail-location {
+  margin: -0.35rem 0 0.8rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
 .rail-lede {
-  margin: 0 0 2rem;
+  margin: 0 0 1.1rem;
   color: var(--text-soft);
   font-size: 0.98rem;
+}
+
+.rail-audiences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  margin: 0 0 1.6rem;
+}
+
+.rail-audiences a {
+  color: var(--text-soft);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rail-audiences a:hover {
+  color: var(--brand);
+  text-decoration: none;
 }
 
 .rail-nav {
@@ -274,7 +301,8 @@ p {
   border-top: 1px solid var(--border);
 }
 
-.job > summary {
+.job > summary,
+.archive > summary {
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -282,14 +310,53 @@ p {
   gap: 0.2rem;
 }
 
-.job > summary::-webkit-details-marker {
+.job > summary::-webkit-details-marker,
+.archive > summary::-webkit-details-marker {
   display: none;
+}
+
+.job > summary:hover .job-title,
+.archive > summary:hover .job-title {
+  color: var(--brand);
+}
+
+.job-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.job-toggle {
+  flex: 0 0 auto;
+  width: 0.52rem;
+  height: 0.52rem;
+  margin-top: 0.1rem;
+  border-right: 2px solid var(--text-soft);
+  border-bottom: 2px solid var(--text-soft);
+  transform: rotate(45deg);
+  transition: transform 0.16s ease;
+}
+
+.job[open] > summary .job-toggle,
+.archive[open] > summary .job-toggle {
+  margin-top: 0.35rem;
+  transform: rotate(225deg);
 }
 
 .job-title {
   font-family: var(--display);
   font-weight: 700;
   font-size: 1.02rem;
+}
+
+.job-lede {
+  display: block;
+  max-width: 40rem;
+  margin: 0.35rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .job-meta {
@@ -306,12 +373,23 @@ p {
   color: inherit;
 }
 
-.job[open] .job-title {
+.job[open] .job-title,
+.archive[open] .job-title {
   color: var(--brand);
 }
 
-.job .prose {
+.job .prose,
+.job .job-bullets,
+.job .chips {
   margin-top: 0.7rem;
+}
+
+.archive {
+  margin-top: 1.4rem;
+}
+
+.archive .project-grid {
+  margin-top: 0.9rem;
 }
 
 .edu,
@@ -368,6 +446,16 @@ p {
   width: 100%;
   margin: 0.85rem 0 0.25rem;
   padding: 0;
+}
+
+.season-grid-playable {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 28rem;
+  margin: 1.1rem 0 0.35rem;
+}
+
+.season-help {
+  margin-top: 0.85rem;
 }
 
 .season-card {
@@ -447,6 +535,20 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.55rem;
+}
+
+.project-grid-featured .project-card {
+  padding: 1rem 1.05rem 0.95rem;
+}
+
+.project-grid-featured .project-card h3 {
+  font-size: 1.02rem;
+}
+
+.project-grid-featured .project-summary {
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  font-size: 0.88rem;
 }
 
 .card {
@@ -623,6 +725,14 @@ p {
     gap: 0.7rem 1rem;
   }
 
+  .rail-audiences {
+    margin-bottom: 1.2rem;
+  }
+
+  .season-grid-playable {
+    max-width: none;
+  }
+
   .hobby-list,
   .model-grid {
     grid-template-columns: 1fr;
@@ -660,7 +770,8 @@ p {
 }
 
 @media (max-width: 520px) {
-  .project-grid {
+  .project-grid,
+  .season-grid-playable {
     grid-template-columns: 1fr;
   }
 }
@@ -951,5 +1062,124 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .job-toggle {
+    transition: none;
+  }
+}
+
+.resume-page {
+  background: var(--bg);
+}
+
+.resume {
+  width: min(44rem, calc(100% - 2.4rem));
+  margin: 0 auto;
+  padding: 2.4rem 0 4rem;
+}
+
+.resume-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem 1rem;
+  margin: 0 0 2rem;
+}
+
+.resume-print {
+  appearance: none;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.resume-print:hover {
+  border-color: var(--brand-dim);
+  color: var(--brand);
+}
+
+.resume-mast h1 {
+  margin: 0 0 0.55rem;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.resume-job {
+  margin: 0 0 1.4rem;
+}
+
+.resume-job h3 {
+  margin-bottom: 0.15rem;
+}
+
+.resume-stack {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+@media print {
+  body,
+  .resume-page {
+    background: #fff;
+    color: #111;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .resume-tools,
+  .rail,
+  .site-footer,
+  .stack-board,
+  .drift,
+  .model-grid,
+  .season-grid,
+  .job-toggle {
+    display: none !important;
+  }
+
+  .resume {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    display: block;
+    width: 100%;
+  }
+
+  .job > summary {
+    cursor: default;
+  }
+
+  .content,
+  .section {
+    padding: 0 0 1.2rem;
+  }
+
+  h2 {
+    border-bottom-color: #ccc;
   }
 }
