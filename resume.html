@@ -1,0 +1,118 @@
+---
+layout: resume
+title: Resume
+permalink: /resume/
+---
+
+{% assign p = site.data.profile %}
+
+<header class="resume-mast">
+  <p class="rail-role">{{ p.role }}</p>
+  <h1>{{ p.name }}</h1>
+  <p class="resume-contact">
+    <span>{{ p.location }}</span>
+    {% if p.email %}
+      <a href="mailto:{{ p.email }}">{{ p.email }}</a>
+    {% endif %}
+    {% for link in p.links %}
+      <a href="{{ link.url }}">{{ link.label }}</a>
+    {% endfor %}
+    <a href="{{ '/' | relative_url }}">alberghini.io/me</a>
+  </p>
+  <p class="prose">{{ p.lede }}</p>
+</header>
+
+<section>
+  <h2>About</h2>
+  {% for para in p.about %}
+    <p class="prose">{{ para }}</p>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>Experience</h2>
+  {% for job in p.experience %}
+    <article class="resume-job">
+      <h3>{{ job.title }} · {{ job.org }}</h3>
+      <p class="job-meta">
+        <span>{{ job.dates }}</span>
+        {% if job.location %}<span>{{ job.location }}</span>{% endif %}
+      </p>
+      {% if job.summary %}<p class="prose">{{ job.summary }}</p>{% endif %}
+      {% if job.bullets and job.bullets.size > 0 %}
+        <ul class="job-bullets">
+          {% for bullet in job.bullets %}
+            <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% assign outcomes = job.outcomes | compact %}
+      {% if outcomes.size > 0 %}
+        <p class="job-outcomes-label">Outcomes</p>
+        <ul class="job-bullets">
+          {% for item in outcomes %}
+            {% if item != "" %}
+              <li>{{ item }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if job.stack %}
+        <p class="resume-stack">{{ job.stack | join: " · " }}</p>
+      {% endif %}
+    </article>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>Education</h2>
+  {% for ed in p.education %}
+    <article class="resume-job">
+      <h3>{{ ed.degree }} · {{ ed.school }}</h3>
+      <p class="job-meta">
+        <span>{{ ed.dates }}</span>
+        <span>{{ ed.concentration }}</span>
+        <span>{{ ed.honors }}</span>
+      </p>
+    </article>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>Mentoring</h2>
+  <p class="prose">{{ p.mentoring.intro }}</p>
+  {% for role in p.mentoring.roles %}
+    <article class="resume-job">
+      <h3>{{ role.title }}</h3>
+      <p class="job-meta">{{ role.org }}</p>
+      {% if role.summary %}<p class="prose">{{ role.summary }}</p>{% endif %}
+      {% if role.places %}
+        <ul class="job-bullets">
+          {% for place in role.places %}
+            <li>{{ place.role }} — {{ place.org }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </article>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>Selected work</h2>
+  <ul class="job-bullets">
+    {% for proj in p.projects %}
+      {% if proj.featured %}
+        <li>
+          <a href="{{ proj.url }}">{{ proj.name }}</a>
+          — {{ proj.summary }}
+        </li>
+      {% endif %}
+    {% endfor %}
+    {% for paper in p.research %}
+      <li>
+        <a href="{{ paper.doi }}">{{ paper.title }}</a>
+        — {{ paper.authors }} · {{ paper.kind }}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

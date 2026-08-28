@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body class="resume-page">
+  <main class="resume">
+    <p class="resume-tools">
+      <a href="{{ '/' | relative_url }}">Back to site</a>
+      <button type="button" class="resume-print" data-resume-print>Print / Save PDF</button>
+    </p>
+    {{ content }}
+  </main>
+  <script>
+    (function () {
+      var btn = document.querySelector("[data-resume-print]");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          window.print();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

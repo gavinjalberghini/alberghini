@@ -1,9 +1,9 @@
 # Site settings
 title: Gavin Alberghini
-tagline: MLOps & DevSecOps Team Lead
+tagline: DevSecOps Team Lead
 description: >-
-  MLOps and DevSecOps team lead and CRE product owner at MITRE.
-  Cloud platforms for public missions.
+  DevSecOps team lead and CRE product owner at MITRE.
+  GovCloud platforms for public-mission software and data work.
 author: Gavin Alberghini
 
 # Served at https://alberghini.io/me — the tunnel forwards that prefix
