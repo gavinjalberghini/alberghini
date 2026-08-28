@@ -329,11 +329,11 @@ p {
 
 .job-toggle {
   flex: 0 0 auto;
-  width: 0.45rem;
-  height: 0.45rem;
-  margin-top: 0.15rem;
-  border-right: 1.5px solid var(--muted);
-  border-bottom: 1.5px solid var(--muted);
+  width: 0.52rem;
+  height: 0.52rem;
+  margin-top: 0.1rem;
+  border-right: 2px solid var(--text-soft);
+  border-bottom: 2px solid var(--text-soft);
   transform: rotate(45deg);
   transition: transform 0.16s ease;
 }
