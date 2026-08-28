@@ -1,31 +1,21 @@
 name: Gavin Alberghini
 role: DevSecOps Team Lead
 location: Virginia, USA
-email: gavinjalberghini@gmail.com
 lede: >-
-  DevSecOps lead at MITRE. I own CRE, a GovCloud platform that gets
-  software and data work onto shared infrastructure faster.
-
-audiences:
-  - label: Hiring
-    href: "#experience"
-  - label: Students
-    href: "#mentoring"
-  - label: Educators
-    href: "#education"
-  - label: Peers
-    href: "#research"
+  DevSecOps Lead Engineer supporting software engineering and 
+  data analysis across public missions at MITRE through ownership 
+  of cutting edge cloud platforms that streamline capabilities 
+  and accelerate time to value.
 
 about:
   - >-
-    I run a lean DevSecOps team for CRE — MITRE's AWS GovCloud
-    collaborative research environment. The platform is a seven-figure
-    program that gives mission teams a shared place to run software and
-    data work, including science on petabytes of information.
+    I run a lean DevSecOps team supporting AWS govcloud collaborative
+    environments at scale. These environments operate on a seven-figure 
+    budget and support data science activities across petabytes of information.
   - >-
-    Outside of work I teach and advise. Mentorship is not a side note:
-    I am a FIRST Robotics mentor, a capstone advisor, and a former
-    undergraduate CS instructor.
+    Outside of work I am an active member of the STEM community. Mentorship 
+    and giving back to the next generation are important to me. I
+    am a dedicated teacher, FIRST Robotics mentor, and capstone advisor.
 
 links:
   - label: GitHub
@@ -34,7 +24,7 @@ links:
     url: https://www.linkedin.com/in/gavin-alberghini-76231a1b2
 
 platform:
-  intro: Tap a name for a short note. Each name also opens the docs.
+  intro: Technologies in my daily work & hobbies. Hover for a note, click for the docs.
   items:
     - name: Kubernetes
       kind: oss
@@ -84,7 +74,7 @@ platform:
       kind: oss
       url: https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html
       blurb: Device plugin for GPU visibility in Jupyter and Spark.
-    - name: Unity
+    - name: Unity 
       kind: oss
       url: https://unity.com/
       blurb: Game engine for creating 3D, 2D, and VR games.
@@ -100,11 +90,11 @@ platform:
       kind: oss
       url: https://argo-cd.readthedocs.io/en/stable/
       blurb: Declarative GitOps for Kubernetes.
-    - name: AWS GovCloud
+    - name: AWS GovCloud 
       kind: paas
       url: https://aws.amazon.com/govcloud/
       blurb: AWS GovCloud for government and defense customers.
-    - name: Ansible
+    - name: Ansible 
       kind: oss
       url: https://docs.ansible.com/ansible/latest/index.html
       blurb: Configuration management for infrastructure.
@@ -120,7 +110,7 @@ platform:
       kind: oss
       url: https://www.sonarqube.org/docs/
       blurb: Code quality and security scanning for codebases.
-    - name: Java
+    - name: Java 
       kind: language
       url: https://docs.oracle.com/en/java/
       blurb: Programming language for the JVM.
@@ -128,6 +118,7 @@ platform:
       kind: language
       url: https://docs.python.org/
       blurb: Programming language for the Python ecosystem.
+    
 
 experience:
   - org: MITRE
@@ -135,8 +126,7 @@ experience:
     dates: Jun 2025 — Present
     location: Williamsburg, VA
     summary: >-
-      Lead the strategy, architecture, and execution of CRE — MITRE's
-      GovCloud collaborative research environment.
+      Lead the strategy, architecture, and execution of the CRE platform.
     bullets:
       - Hire and mentor talent to support the platform and the mission.
       - Drive cost, reliability, and access that enables rapid science and engineering.
@@ -154,7 +144,8 @@ experience:
     title: Senior DevSecOps Engineer
     dates: Mar 2023 — Jun 2025
     location: Richmond, then Williamsburg, VA
-    summary: Technical lead for CRE implementation — ingest, GPUs, and uptime.
+    summary: >-
+      Technical lead for CRE implementation efforts.
     bullets:
       - Cloud first data ingest via Spark Operator and Dagster.
       - Monitoring stack for observability and uptime.
@@ -173,8 +164,8 @@ experience:
     dates: Jun 2021 — Mar 2023
     location: Hampton, VA
     summary: >-
-      Standardize access, compliance, and cost across MITRE internal
-      cloud environments.
+      Work across MITRE internal cloud environments to standardize access, 
+      compliance, and cost.
     bullets:
       - Bootstrap the MITRE Engineering Platform via IaC and GitOps.
       - Team growth by 1 engineer.
@@ -190,9 +181,7 @@ experience:
     title: Computer Science Instructor
     dates: 2020 — 2021
     location: Richmond, VA
-    summary: >-
-      Undergraduate CS instruction — interactive systems with Unity,
-      Kinect, and the HTC Vive.
+    summary: Teaching support for the Computer Science department.
     stack:
       - Unity
       - Kinect V2
@@ -202,9 +191,7 @@ experience:
     title: Lecture, Lab & Research Assistant
     dates: 2019 — 2021
     location: Richmond, VA
-    summary: >-
-      Lecture and lab support in Engineering. The AESAKNNS streaming-ML
-      paper started in that lab.
+    summary: Teaching support; the AESAKNNS paper started in that lab.
     stack:
       - Java
       - Python
@@ -224,17 +211,15 @@ education:
 
 mentoring:
   intro: >-
-    I teach and advise in a STEM academy, a Governor's School, an ODU
-    capstone, and FIRST. Students own the work; I sit in empty chairs
-    and do not hover. Two Grassfield FRC seasons are playable below.
-    The FRC playbook I actually use is in Highlights.
+    Unity at a STEM academy, machine learning at the Governor's School,
+    an ODU capstone, and FIRST.
   roles:
     - title: Unity Mentor
       org: Grassfield High School STEM Academy
       url: https://www.cpschools.com/o/gfh/page/governors-stem-academy
       summary: >-
         World-building and gameplay workshops with the STEM Academy.
-        Two of those FRC seasons became the browser games above.
+        Two of those FRC seasons became browser games you can play here.
       games:
         intro: >-
           Mouse and keyboard are the main controls. Xbox and PlayStation-style
@@ -256,23 +241,21 @@ mentoring:
       org: Hampton Governor's School Senior Capstone
       url: https://nhrec.org/gsst/
       summary: >-
-        Advise Governor's School seniors on applied ML capstones —
-        problem, method, and a result they can defend.
+        Advise senior capstone work in applied machine learning.
 
     - title: Capstone Mentor
       org: Old Dominion University Senior Capstone
       url: https://www.odu.edu/
       summary: >-
-        Mentor an ODU senior team from design through delivery, with
-        students holding the technical chairs.
+        Mentor an ODU senior capstone team through design and delivery.
 
     - title: FIRST Robotics Mentor
       org: FIRST Chesapeake
       url: https://www.firstchesapeake.org/frc
       summary: >-
-        Programming mentor at two high schools, control-system advisor
-        at Portsmouth and Chesapeake events, and robot inspector in
-        Southwest Virginia.
+        Programming mentor at two high schools, control-system advisor at
+        Portsmouth and Chesapeake events, and robot inspector in Southwest
+        Virginia.
       places:
         - role: Robot Programming Mentor
           org: Collegiate School
@@ -324,21 +307,20 @@ mentoring:
           url: https://www.youtube.com/watch?v=_fybREErgyM
           video: _fybREErgyM
 
+
 hobbies:
-  intro: >-
-    Making, machines, and the shop. This site is served from a
-    Raspberry Pi cluster I run at home.
+  intro: Making, machines, and the shop.
   items:
     - name: 3D Printing
       note: Parts, fixtures, and models — two of them are below.
     - name: CAD
       note: Designs for the printer and the shop.
     - name: Home Lab
-      note: Servers, storage, and the network this site runs on.
+      note: Servers, storage, and the network under them.
     - name: Raspberry Pi
-      note: The boards under the homelab, and the things they run.
+      note: Small boards and the things they run.
     - name: Motorcycle
-      note: Riding, then the work that follows — including the clamp below.
+      note: Riding, then the work that follows.
     - name: Automotive Maintenance
       note: Shop work on the cars as well as the bike.
 
@@ -362,53 +344,49 @@ projects:
     url: https://alberghini.io/frc-ss
     repo: https://github.com/gavinjalberghini/FRC-SS
     type: personal
-    featured: true
-    summary: >-
-      The playbook I use with FRC teams — mission, staffing, decisions,
-      season plan, and a learning hub.
+    summary: How to run an FRC team — control systems, code, the season.
 
   - name: ML Bootcamp
     url: https://github.com/gavinjalberghini/ml-bootcamp
     repo: https://github.com/gavinjalberghini/ml-bootcamp
     type: education
-    featured: true
     summary: >-
-      Mentorship sequence in applied ML — kNN, ensembles, streams,
-      drift, optional Jetson. Issues travel with the template.
-
-  - name: Unity Learning Objectives
-    url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
-    type: professional
-    featured: true
-    summary: Unity workshops that fold hardware into world-building.
+      Template repo for a mentorship sequence in applied ML — kNN,
+      ensembles, streams, drift, optional Jetson. Issues travel with
+      the template.
 
   - name: AESAKNNS
     url: https://doi.org/10.1016/j.neucom.2022.01.075
     repo: https://github.com/canoalberto/AESAKNNS
     type: professional
-    summary: 2022 reference code for the Neurocomputing paper.
+    summary: Reference code for the Neurocomputing paper.
+
+  - name: Unity Learning Objectives
+    url: https://github.com/gavinjalberghini/Unity-Learning-Objectives
+    type: professional
+    summary: Unity workshops that fold hardware into world-building.
 
   - name: Shifting Reality VR
     url: https://github.com/gavinjalberghini/Shifting-Reality-VR
     type: education
-    summary: Coursework — Unity world-building for the HTC Vive.
+    summary: Unity world-building for the HTC Vive.
 
   - name: Hack-Heist
     url: https://github.com/gavinjalberghini/Hack-Heist
     type: education
-    summary: Coursework — Android game that teaches Java to beginners.
+    summary: Android game that teaches Java to beginners.
 
   - name: NNSB-CCIPT
     url: https://github.com/gavinjalberghini/NNSB-CCIPT
     type: professional
-    summary: Coursework-era climate-impact tool for Hampton Roads.
+    summary: Climate-impact tool for Hampton Roads.
 
   - name: Operating-System-Simulation
     url: https://github.com/gavinjalberghini/Operating-System-Simulation
     type: education
-    summary: Coursework — OS simulator for coverage-tool experiments.
+    summary: OS simulator for coverage-tool experiments.
 
   - name: Protein-Interaction-Classifier
     url: https://github.com/gavinjalberghini/Protein-Interaction-Classifier
     type: education
-    summary: Coursework — protein–DNA/RNA interaction classifiers.
+    summary: Protein–DNA/RNA interaction classifiers.
